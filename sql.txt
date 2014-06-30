@@ -21,6 +21,7 @@ CREATE TABLE videos(
    
    genre_id		INT
    
+   
 );
 
 CREATE TABLE genres (
