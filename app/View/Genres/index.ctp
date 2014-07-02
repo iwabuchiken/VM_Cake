@@ -13,7 +13,7 @@
 				<td>
 					<?php echo $this->Html->link($genre['Genre']['name'],
 									array(
-										'controller' => 'videos', 
+										'controller' => 'genres', 
 										'action' => 'view', 
 										$genre['Genre']['id'])
 									); ?>

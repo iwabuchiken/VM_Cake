@@ -29,5 +29,56 @@ class VideosController extends AppController {
 			$this->Session->setFlash(__('Unable to add your video.'));
 		}
 	}
+
+	public function delete($id) {
+		/******************************
+	
+		validate
+	
+		******************************/
+		if (!$id) {
+			throw new NotFoundException(__('Invalid video id'));
+		}
+	
+		$video = $this->Video->findById($id);
+	
+		if (!$video) {
+			throw new NotFoundException(__("Can't find the video. id = %d", $id));
+		}
+	
+		/******************************
+	
+		delete
+	
+		******************************/
+		if ($this->Video->delete($id)) {
+			// 		if ($this->Video->save($this->request->data)) {
+				
+			$this->Session->setFlash(__("Video deleted => %s", $video['Video']['title']));
+				
+			return $this->redirect(
+					array(
+							'controller' => 'videos',
+							'action' => 'index'
+							
+					));
+				
+		} else {
+				
+			$this->Session->setFlash(
+					__("Video can't be deleted => %s", $video['Video']['title']));
+				
+			// 			$page_num = _get_Page_from_Id($id - 1);
+				
+			return $this->redirect(
+					array(
+							'controller' => 'videos',
+							'action' => 'view',
+							$id
+					));
+				
+		}
+	
+	}//public function delete($id)
 	
 }

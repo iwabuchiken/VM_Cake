@@ -14,7 +14,7 @@
 				<td>
 					<?php echo $this->Html->link($position['Position']['video_id'],
 									array(
-										'controller' => 'videos', 
+										'controller' => 'positions', 
 										'action' => 'view', 
 										$position['Position']['id'])
 									); ?>
