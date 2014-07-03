@@ -37,6 +37,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 		
 		echo $this->Html->script('swfobject');
+		
+		echo $this->Html->script('http://code.jquery.com/jquery-1.10.2.min.js');
+		
+		echo $this->Html->script('main');
+		
 	?>
 </head>
 <body>

@@ -2,6 +2,18 @@
 										$url = $video['Video']['url']
 										 
 									); ?></h1>
+<div id="jqarea">
+Hi
+</div>
+
+<?php 
+// 	echo "hi";
+	
+// 	echo $this->Html->link('Home', $url = "javascript:void(0);",
+	echo $this->Html->link('Home', "javascript:void(0);",
+			array('onclick' => 'show_Message()'));
+
+?>
 
 <?php
 	$subject = $video['Video']['url'];
