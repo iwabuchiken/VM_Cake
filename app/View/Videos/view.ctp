@@ -57,40 +57,97 @@
 		echo "No matches";
 	
 	}
-	;
-// 	echo $matches[1];
-// 	if ($matches != null && count($matches) > 0) {
 	
-// 		$token = $matches[0][0];
-		
-// 	} else {
-	
-// 		$token = null;
-	
-// 	}
-	
-// 	echo "<br>".$token;
 ?>
 
 <br>
 <br>
 
 <script type="text/javascript" src="swfobject.js"></script>    
-  <div id="ytapiplayer">
+  <div id="ytplayer">
+<!--   <div id="ytapiplayer"> -->
     You need Flash player 8+ and JavaScript enabled to view this video.
   </div>
 
   <script type="text/javascript">
 
     var params = { allowScriptAccess: "always" };
-    var atts = { id: "myytplayer" };
+    var atts = { id: "ytplayer" };
+//     var atts = { id: "myytplayer" };
     swfobject.embedSWF(
     	    "http://www.youtube.com/v/"
     	    + "<?php echo $my_array_of_vars['v']; ?>"
 //     	    + "imc4xQDp_Fs"
     	    + "?enablejsapi=1&playerapiid=ytplayer&version=3",
-                       "ytapiplayer", "760", "581", "8", null, null, params, atts);
+                       "ytplayer", "760", "581", "8", null, null, params, atts);
+//                        "ytapiplayer", "760", "581", "8", null, null, params, atts);
+//                        "ytplayer", "760", "581", "8", null, null, params);
 //                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
+
+	function play() {
+	
+	  if (ytplayer) {
+	
+		ytplayer.playVideo();
+	
+	  }
+	
+	}
+	
+	
+	
+	function pause() {
+	
+	  if (ytplayer) {
+	
+		ytplayer.pauseVideo();
+	
+	  }
+	
+	}
+	
+	
+	
+	function stop() {
+	
+	  if (ytplayer) {
+	
+		ytplayer.stopVideo();
+	
+	  }
+	
+	}
+	
+	function seek($position) {
+	
+	  if (ytplayer) {
+	
+		ytplayer.seekTo($position);
+//		ytplayer.seekTo(<?php //echo $position;?>);
+//		ytplayer.seekTo(<?php //echo 20;?>);
+// 		ytplayer.seekTo(10);
+	
+	  }
+	
+	}
+	
+	function getCurrentTime() {
+	
+	  if (ytplayer) {
+	
+		$cur = ytplayer.getCurrentTime();
+
+		alert($cur);
+// 		alert("current = ".$cur);
+//		ytplayer.seekTo(<?php //echo $position;?>);
+//		ytplayer.seekTo(<?php //echo 20;?>);
+// 		ytplayer.seekTo(10);
+	
+	  }
+	
+	}
+	
+	
 
   </script>
   
@@ -117,3 +174,26 @@
 
 </p>
 
+<br>
+<br>
+
+<a href="javascript:void(0);" onclick="play();">Play</a>
+
+<a href="javascript:void(0);" onclick="pause();">Pause</a>
+
+<a href="javascript:void(0);" onclick="stop();">Stop</a>
+
+<a href="javascript:void(0);" onclick="seek(30);">Seek</a>
+
+<a href="javascript:void(0);" onclick="getCurrentTime();">Current time</a>
+
+<br>
+<br>
+<?php for ($i = 0; $i < 10; $i++) {
+		echo "<a href=\"javascript:void(0);\" onclick=\"seek("
+				.($i * 20)
+				.");\">"
+				.($i * 20)."</a>";
+		echo " | ";
+	}
+?>
