@@ -81,4 +81,18 @@ class VideosController extends AppController {
 	
 	}//public function delete($id)
 	
+	public function retrieve_CurrentTime() {
+		
+		$this->layout = 'plain';
+		
+		$cur_Time = 500;
+		
+		$this->set('cur_Time', $cur_Time);
+		
+		//REF http://book.cakephp.org/2.0/en/controllers.html "This allows direct rendering of elements"
+		$this->render('/Elements/videos/js/retrieve_CurrentTime');
+		
+// 		return $this->redirect(array('action' => 'index'));
+		
+	}
 }

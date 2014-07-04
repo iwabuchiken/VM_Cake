@@ -42,6 +42,69 @@ function show_Message() {
 	
 //	alert("jquery!");
 	
-	$("#jqarea").text("done");
+//	$("#jqarea").text("done");
 	
+	$.ajax({
+		
+	    url: "/VM_Cake/videos/retrieve_CurrentTime",
+	    type: "GET",
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+		$("#jqarea").text(data);
+		
+		seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+	    
+	});
+	
+}
+
+function play() {
+	
+	  if (ytplayer) {
+	
+		ytplayer.playVideo();
+	
+	  }
+	
+	}
+
+function pause() {
+	
+  if (ytplayer) {
+
+	ytplayer.pauseVideo();
+
+  }
+
+}
+
+
+
+function stop() {
+
+  if (ytplayer) {
+
+	ytplayer.stopVideo();
+
+  }
+
+}
+
+function seek($position) {
+
+  if (ytplayer) {
+
+	ytplayer.seekTo($position);
+//		ytplayer.seekTo(<?php //echo $position;?>);
+//		ytplayer.seekTo(<?php //echo 20;?>);
+//		ytplayer.seekTo(10);
+
+  }
+
 }

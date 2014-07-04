@@ -31,29 +31,7 @@ Hi
 // 	echo $video['Video']['url']."<br>";
 	
 	$pattern = '/\?v=(.+?)&/';	// [0] => ?v=aaaaAAAAAbbb& [1] => aaaaAAAAAbbb
-// 	$pattern = '/\?v=(.+?)&*/';	// [0] => ?v=a [1] => a
-// 	$pattern = '/\?v=(.+?)&?/';	// [0] => ?v=a [1] => a
-// 	$pattern = '/\?v=(.+)&?/';	// aaaaAAAAAbbb&xyz
-// 	$pattern = '/\?v=(.+?)&?/';	// [0] => ?v=a [1] => a
-	
-	// https://www.youtube.com/watch?v=imc4xQDp_Fs&list=WL&index=32
-	// https://www.youtube.com/watch?v=Z_xq0AA-oRA
-	
-	
-// 	$subject = $video['Video']['url'];
-// 	$pattern = '/\?v=([a-zA-Z]+?)&?/';	// [0] => ?v=i [1] => i
-// 	$pattern = '/\?v=([a-z]+?)&?/';	// [0] => ?v=i [1] => i 
-// 	$pattern = '/\?v=((.|_)*?)&?/';	// [0] => ?v= [1] =>
-// 	$pattern = '/\?v=((.|_)+?)&?/';	// [0] => ?v=Z [1] => Z [2] => Z
-// 	$pattern = '/\?v=(.+?)&?/';		// [0] => ?v=Z [1] => Z 
-// 	$pattern = '/\?v=(.+?)&/';		// [0] => ?v=imc4xQDp_Fs& [1] => imc4xQDp_Fs
-// 	$pattern = '/\?v=.+?&/';		// ?v=imc4xQDp_Fs&
-// 	$pattern = '/\?v=.+&?/';	// ?v=imc4xQDp_Fs&list=WL&index=32
-// 	$pattern = '/\?v=.+&?/';
-// 	$pattern = '/\?v=.+?&?/';
-// 	$pattern = '/\?v=(.|_)+?&?/';
-// 	$pattern = '/\?v=[a-zA-Z0-9]+?&?/';
-// 	$pattern = '/\?v=[a-zA-Z0-9_]+?&?/';
+
 	preg_match($pattern, $subject, $matches);
 // 	preg_match($pattern, $subject, $matches, PREG_OFFSET_CAPTURE, 3);
 	print_r($matches);
@@ -96,52 +74,52 @@ Hi
 //                        "ytplayer", "760", "581", "8", null, null, params);
 //                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
 
-	function play() {
+// 	function play() {
 	
-	  if (ytplayer) {
+// 	  if (ytplayer) {
 	
-		ytplayer.playVideo();
+// 		ytplayer.playVideo();
 	
-	  }
+// 	  }
 	
-	}
-	
-	
-	
-	function pause() {
-	
-	  if (ytplayer) {
-	
-		ytplayer.pauseVideo();
-	
-	  }
-	
-	}
+// 	}
 	
 	
 	
-	function stop() {
+// 	function pause() {
 	
-	  if (ytplayer) {
+// 	  if (ytplayer) {
 	
-		ytplayer.stopVideo();
+// 		ytplayer.pauseVideo();
 	
-	  }
+// 	  }
 	
-	}
+// 	}
 	
-	function seek($position) {
 	
-	  if (ytplayer) {
 	
-		ytplayer.seekTo($position);
+// 	function stop() {
+	
+// 	  if (ytplayer) {
+	
+// 		ytplayer.stopVideo();
+	
+// 	  }
+	
+// 	}
+	
+// 	function seek($position) {
+	
+// 	  if (ytplayer) {
+	
+// 		ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
-// 		ytplayer.seekTo(10);
+// // 		ytplayer.seekTo(10);
 	
-	  }
+// 	  }
 	
-	}
+// 	}
 	
 	function getCurrentTime() {
 	

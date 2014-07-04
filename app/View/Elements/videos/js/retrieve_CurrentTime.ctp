@@ -1,0 +1,1 @@
+<?php echo $cur_Time; ?>
