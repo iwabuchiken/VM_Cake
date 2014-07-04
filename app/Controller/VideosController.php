@@ -107,6 +107,28 @@ class VideosController extends AppController {
 		$result = $this->request->query['curTime'];
 		$video_id = $this->request->query['video_id'];
 		
+		/******************************
+		
+			save position
+		
+		******************************/
+		$res = $this->save_Position($result, $video_id);
+		
+		if ($res == true) {
+		
+			$result = "Saved: ".$result;
+			
+		} else {
+		
+			$result = "Not saved: ".$result;
+		
+		}
+
+		/******************************
+		
+			report
+		
+		******************************/
 		$result = $result."/".$video_id;
 		
 // 		debug($result);
@@ -117,6 +139,26 @@ class VideosController extends AppController {
 		
 		
 	}
-	
+
+	public function 
+	save_Position($result, $video_id) {
+		
+		$this->loadModel('Position');
+		
+		$this->Position->create();
+		
+		$this->Position->set('video_id', $video_id);
+		$this->Position->set('point', $result);
+		
+		if ($this->Position->save()) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+	}
 	
 }

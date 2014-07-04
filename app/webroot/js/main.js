@@ -134,6 +134,8 @@ function saveCurrentTime_js() {
 	//REF http://stackoverflow.com/questions/4582423/get-value-of-input-tag-using-jquery answered Jan 3 '11 at 6:14
 	var video_id = $("#video_id_hidden").val();
 	
+	
+	
 	$.ajax({
 		
 	    url: url,
