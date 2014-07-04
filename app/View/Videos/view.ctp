@@ -5,7 +5,9 @@
 <div id="jqarea">
 Hi
 </div>
-
+<a href="javascript:void(0);" onclick="saveCurrentTime_js();">Save current time</a>	
+<br>
+<br>
 <?php 
 // 	echo "hi";
 	
@@ -74,45 +76,14 @@ Hi
 //                        "ytplayer", "760", "581", "8", null, null, params);
 //                        "ytapiplayer", "425", "356", "8", null, null, params, atts);
 
-// 	function play() {
+// 	function getCurrentTime() {
 	
 // 	  if (ytplayer) {
 	
-// 		ytplayer.playVideo();
-	
-// 	  }
-	
-// 	}
-	
-	
-	
-// 	function pause() {
-	
-// 	  if (ytplayer) {
-	
-// 		ytplayer.pauseVideo();
-	
-// 	  }
-	
-// 	}
-	
-	
-	
-// 	function stop() {
-	
-// 	  if (ytplayer) {
-	
-// 		ytplayer.stopVideo();
-	
-// 	  }
-	
-// 	}
-	
-// 	function seek($position) {
-	
-// 	  if (ytplayer) {
-	
-// 		ytplayer.seekTo($position);
+// 		$cur = ytplayer.getCurrentTime();
+
+// 		alert($cur);
+// // 		alert("current = ".$cur);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
 // // 		ytplayer.seekTo(10);
@@ -120,22 +91,6 @@ Hi
 // 	  }
 	
 // 	}
-	
-	function getCurrentTime() {
-	
-	  if (ytplayer) {
-	
-		$cur = ytplayer.getCurrentTime();
-
-		alert($cur);
-// 		alert("current = ".$cur);
-//		ytplayer.seekTo(<?php //echo $position;?>);
-//		ytplayer.seekTo(<?php //echo 20;?>);
-// 		ytplayer.seekTo(10);
-	
-	  }
-	
-	}
 	
 	
 
@@ -176,6 +131,8 @@ Hi
 <a href="javascript:void(0);" onclick="seek(30);">Seek</a>
 
 <a href="javascript:void(0);" onclick="getCurrentTime();">Current time</a>
+
+<a href="javascript:void(0);" onclick="saveCurrentTime_js();">Save current time</a>
 
 <br>
 <br>

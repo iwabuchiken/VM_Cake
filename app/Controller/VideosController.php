@@ -95,4 +95,25 @@ class VideosController extends AppController {
 // 		return $this->redirect(array('action' => 'index'));
 		
 	}
+	
+	public function save_CurrentTime() {
+		
+		$this->layout = 'plain';
+		
+// 		$result = $this->request->data['curTime'];
+// 		$result = $this->request->data;
+// 		$result = $this->request;
+// 		$result = $this->request->query;
+		$result = $this->request->query['curTime'];
+		
+// 		debug($result);
+		
+		$this->set('result', $result);
+		
+		$this->render('/Elements/videos/js/retrieve_CurrentTime');
+		
+		
+	}
+	
+	
 }

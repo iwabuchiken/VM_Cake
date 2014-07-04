@@ -108,3 +108,45 @@ function seek($position) {
   }
 
 }
+function saveCurrentTime_js() {
+	
+	var curTime = ytplayer.getCurrentTime();
+//	var curTime = getCurrentTime();
+	
+	$.ajax({
+		
+	    url: "/VM_Cake/videos/save_CurrentTime?curTime=" + curTime,
+	    type: "GET",
+//	    data: {curTime: curTime},
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+		$("#jqarea").text(data);
+		
+		seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+	    
+	});
+	
+	
+}
+
+function getCurrentTime() {
+	
+  if (ytplayer) {
+
+	$cur = ytplayer.getCurrentTime();
+
+	alert($cur);
+//		alert("current = ".$cur);
+//		ytplayer.seekTo(<?php //echo $position;?>);
+//		ytplayer.seekTo(<?php //echo 20;?>);
+//		ytplayer.seekTo(10);
+
+  }
+	
+}
