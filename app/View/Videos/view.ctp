@@ -5,7 +5,9 @@
 <div id="jqarea">
 Hi
 </div>
-<a href="javascript:void(0);" onclick="saveCurrentTime_js();">Save current time</a>	
+
+<?php echo $this->element('videos/video_view_controller'); ?>
+
 <br>
 <br>
 <?php 
@@ -61,6 +63,9 @@ Hi
     You need Flash player 8+ and JavaScript enabled to view this video.
   </div>
 
+  <!-- REF http://stackoverflow.com/questions/16293741/original-purpose-of-input-type-hidden answered Apr 30 '13 at 6:43 -->
+  <input type="hidden" id="video_id_hidden" name="video_id" value="<?php echo $video['Video']['id']?>">
+  
   <script type="text/javascript">
 
     var params = { allowScriptAccess: "always" };
@@ -122,18 +127,6 @@ Hi
 <br>
 <br>
 
-<a href="javascript:void(0);" onclick="play();">Play</a>
-
-<a href="javascript:void(0);" onclick="pause();">Pause</a>
-
-<a href="javascript:void(0);" onclick="stop();">Stop</a>
-
-<a href="javascript:void(0);" onclick="seek(30);">Seek</a>
-
-<a href="javascript:void(0);" onclick="getCurrentTime();">Current time</a>
-
-<a href="javascript:void(0);" onclick="saveCurrentTime_js();">Save current time</a>
-
 <br>
 <br>
 <?php for ($i = 0; $i < 10; $i++) {
@@ -143,4 +136,12 @@ Hi
 				.($i * 20)."</a>";
 		echo " | ";
 	}
+?>
+
+<?php
+		echo "<a href=\"javascript:void(0);\" onclick=\"seek("
+				."4.529"
+				.");\">"
+				."4.529"."</a>";
+		echo " | ";
 ?>

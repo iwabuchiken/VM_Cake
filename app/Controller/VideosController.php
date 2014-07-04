@@ -105,6 +105,9 @@ class VideosController extends AppController {
 // 		$result = $this->request;
 // 		$result = $this->request->query;
 		$result = $this->request->query['curTime'];
+		$video_id = $this->request->query['video_id'];
+		
+		$result = $result."/".$video_id;
 		
 // 		debug($result);
 		

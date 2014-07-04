@@ -113,18 +113,43 @@ function saveCurrentTime_js() {
 	var curTime = ytplayer.getCurrentTime();
 //	var curTime = getCurrentTime();
 	
+	var hostname = window.location.hostname;
+	
+	var url;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		url = "/cake_apps/VM_Cake/videos/save_CurrentTime";
+		
+	} else {
+
+		url = "/VM_Cake/videos/save_CurrentTime";
+
+	}
+	
+//	alert(hostname);
+	
+//	var video_id = $("#video_id_hidden").text();
+	
+	//REF http://stackoverflow.com/questions/4582423/get-value-of-input-tag-using-jquery answered Jan 3 '11 at 6:14
+	var video_id = $("#video_id_hidden").val();
+	
 	$.ajax({
 		
-	    url: "/VM_Cake/videos/save_CurrentTime?curTime=" + curTime,
+	    url: url,
+//	    url: "/cake_apps/VM_Cake/videos/save_CurrentTime",
+//	    url: "/VM_Cake/videos/save_CurrentTime",
+//	    url: "/VM_Cake/videos/save_CurrentTime?curTime=" + curTime,
 	    type: "GET",
-//	    data: {curTime: curTime},
+	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	    data: {curTime: curTime, video_id: video_id},
 	    timeout: 10000
 	    
 	}).done(function(data, status, xhr) {
 		
 		$("#jqarea").text(data);
 		
-		seek(data);
+//		seek(data);
 		
 	}).fail(function(xhr, status, error) {
 		

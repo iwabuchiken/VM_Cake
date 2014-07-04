@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+/*
+REF http://stackoverflow.com/questions/13491421/cakephp-create-simple-buttons-that-redirects-to-views answered Nov 21 '12 at 11:22
+*/ 
+a.button {
+    color: #6e6e6e;
+    font: bold 20px Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    padding: 7px 12px;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 0 #fff;
+    -webkit-transition: border-color .218s;
+    -moz-transition: border .218s;
+    -o-transition: border-color .218s;
+    transition: border-color .218s;
+    background: #81BEF7;
+    
+    border: solid 1px #dcdcdc;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    margin-right: 20px;
+    cursor:pointer;
+}
+
+/*
+background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+    background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
+*/
