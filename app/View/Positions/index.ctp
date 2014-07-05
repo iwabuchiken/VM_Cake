@@ -2,8 +2,9 @@
 <table>
 		<tr>
 				<th>Id</th>
-				<th>Video id</th>
+				<th>Video title</th>
 				<th>point</th>
+				<th>Created at</th>
 		</tr>
 
 		<!-- Here is where we loop through our $positions array, printing out post info -->
@@ -12,7 +13,7 @@
 		<tr>
 				<td><?php echo $position['Position']['id']; ?></td>
 				<td>
-					<?php echo $this->Html->link($position['Position']['video_id'],
+					<?php echo $this->Html->link($position['Video']['title'],
 									array(
 										'controller' => 'positions', 
 										'action' => 'view', 
@@ -20,6 +21,7 @@
 									); ?>
 				</td>
 				<td><?php echo $position['Position']['point']; ?></td>
+				<td><?php echo $position['Position']['created_at']; ?></td>
 		</tr>
 		<?php endforeach; ?>
 		<?php unset($position); ?>

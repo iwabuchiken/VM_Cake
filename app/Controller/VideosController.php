@@ -5,6 +5,14 @@ class VideosController extends AppController {
 
 	public function index() {
 		$this->set('videos', $this->Video->find('all'));
+		
+		debug(Utils::get_dPath_Log());
+		
+		Utils::write_Log(
+					Utils::get_dPath_Log(), 
+					"Videos#index", 
+					__FILE__, __LINE__);
+		
 	}
 	
 	public function view($id = null) {
@@ -149,6 +157,9 @@ class VideosController extends AppController {
 		
 		$this->Position->set('video_id', $video_id);
 		$this->Position->set('point', $result);
+		
+		$this->Position->set('created_at', Utils::get_CurrentTime());
+		$this->Position->set('updated_at', Utils::get_CurrentTime());
 		
 		if ($this->Position->save()) {
 			

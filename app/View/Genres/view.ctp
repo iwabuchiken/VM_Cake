@@ -1,17 +1,21 @@
 <h1><?php echo h($genre['Genre']['name']); ?></h1>
 
-
-<p>
-	<small>
-		ID: <?php echo $genre['Genre']['id']; ?>
-	</small>
-</p>
-
-<p>
-	<small>
-		name: <?php echo $genre['Genre']['name']; ?>
-	</small>
-</p>
+<table class="table_show">
+  <tr>
+    <td class="td_label_narrow">ID</td>
+    <td class="td_value_mideum"><?php echo $genre['Genre']['id']; ?></td>
+  </tr>
+  <tr>
+    <td class="td_label_narrow">name</td>
+    <td class="td_value_mideum"><?php echo $genre['Genre']['name']; ?></td>
+  </tr>
+  
+  <tr>
+    <td class="td_label_narrow">Created at</td>
+    <td class="td_value_mideum"><?php echo $genre['Genre']['name']; ?></td>
+  </tr>
+  
+</table>
 
 <p>
 	<?php echo $this->Html->link(

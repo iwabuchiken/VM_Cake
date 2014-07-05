@@ -9,6 +9,13 @@
 
 <p>
 	<small>
+		Video title: <?php echo $position['Video']['title']; ?>
+		<!-- Video id: <?php //echo $position['Position']['video_id']; ?> -->
+	</small>
+</p>
+
+<p>
+	<small>
 		Position: <?php echo $position['Position']['point']; ?>
 	</small>
 </p>

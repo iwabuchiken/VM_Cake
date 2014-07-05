@@ -22,6 +22,10 @@ class GenresController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Genre->create();
+			
+			$this->request->data['Genre']['created_at'] = Utils::get_CurrentTime();
+			$this->request->data['Genre']['updated_at'] = Utils::get_CurrentTime();
+			
 			if ($this->Genre->save($this->request->data)) {
 				$this->Session->setFlash(__('Your genres has been saved.'));
 				return $this->redirect(array('action' => 'index'));

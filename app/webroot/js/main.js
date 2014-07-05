@@ -168,12 +168,27 @@ function getCurrentTime() {
 
 	$cur = ytplayer.getCurrentTime();
 
-	alert($cur);
+	return $cur;
+//	alert($cur);
 //		alert("current = ".$cur);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
 //		ytplayer.seekTo(10);
 
   }
+	
+  return null;
+  
+}
+
+function test_AddPosition() {
+	
+	var current_time = getCurrentTime();
+	
+	$("table#table_poslist").append(
+					"<tr><td id=\"poslist_1\">"
+					//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
+//					+ (new Date().toTimeString()) + "</td></tr>");
+					+ current_time.toString() + "</td></tr>");
 	
 }
