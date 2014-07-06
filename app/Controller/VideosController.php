@@ -35,14 +35,33 @@ class VideosController extends AppController {
 		$this->loadModel('Position');
 			
 		$positions = $this->Position->find('all',
+							//REF conditions http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#find
 							array(
 								'conditions' => array(
 													'Position.video_id' => $id
 			
-												),
-								'order' => array('Position.point ASC')
+												)
+// 								,
+// 								'order' => array('Position.point ASC')
 							)
 		);
+		
+		$positions = $this->sort_Position_by_Point($positions);
+// 		$res = $this->sort_Position_by_Point($positions);
+		
+// 		if ($res == true) {
+		
+// 			debug("sort done");
+			
+// 		} else {
+		
+// 			debug("sort not done");
+		
+// 		}
+
+		//REF http://blogs.bigfish.tv/adam/2008/03/24/sorting-with-setsort-in-cakephp-12/
+		//REF referer http://cakephp.1045679.n5.nabble.com/Using-usort-in-Cake-td1327099.html Aug 10, 2009; 11:32pm
+// 		$positions = Set::sort($positions, '{n}.Position.point', 'asc');
 		
 		$this->set('positions', $positions);
 		
@@ -219,5 +238,35 @@ class VideosController extends AppController {
 		}
 		
 	}
+
+	public function
+	sort_Position_by_Point($positions) {
+		
+// 		usort($positions, "cmp_Position_by_Point");
+
+		//REF http://cakephp.1045679.n5.nabble.com/Using-usort-in-Cake-td1327099.html Aug 11, 2009; 9:18pm
+		usort($positions, array(&$this, "cmp_Position_by_Point"));
+		
+		return $positions;
+		
+// 		return usort($positions, array(&$this, "cmp_Position_by_Point"));
+		
+	}
 	
+	//REF http://stackoverflow.com/questions/4282413/php-sort-array-of-objects-by-object-fields answered Nov 26 '10 at 3:53
+	public function
+	cmp_Position_by_Point($pos1, $pos2) {
+
+		//REF http://www.php.net/manual/en/function.floatval.php
+		$point_1 = floatval($pos1['Position']['point']);
+		$point_2 = floatval($pos2['Position']['point']);
+		
+		//REF http://stackoverflow.com/questions/481466/php-string-to-float answered Jan 26 '09 at 21:35
+// 		$point_1 = (float) $pos1['Position']['point'];
+// 		$point_2 = (float) $pos2['Position']['point'];
+		
+		return $point_1 > $point_2;
+// 		return $point_1 < $point_2;
+		
+	}
 }

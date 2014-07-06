@@ -5,6 +5,8 @@
 									
 	 / (position = <?php echo count($positions) ?>)
 </h1>
+
+
 <?php echo $this->element('videos/video_view_controller'); ?>
 
 <br>
