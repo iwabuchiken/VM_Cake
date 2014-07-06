@@ -1,7 +1,10 @@
 <h1>Title: <?php echo $this->Html->link($video['Video']['title'],
 										$url = $video['Video']['url']
 										 
-									); ?></h1>
+									); ?>
+									
+	 / (position = <?php echo count($positions) ?>)
+</h1>
 <?php echo $this->element('videos/video_view_controller'); ?>
 
 <br>
@@ -25,23 +28,8 @@
 <script type="text/javascript" src="swfobject.js"></script>    
 
 <div>
-  	<table id="table_poslist">
-  	
-  		<tr>
-  			<td id="poslist_1">
-  				123
-  			</td>
-  		</tr>
-  		
-  		<tr>
-  			<td id="poslist_2">
-  				123
-  			</td>
-  		</tr>
-  		
-  	</table>
 
-
+	<?php echo $this->element('videos/view/view_table_poslist')?>
 
   <div id="ytplayer">
 <!--   <div id="ytapiplayer"> -->

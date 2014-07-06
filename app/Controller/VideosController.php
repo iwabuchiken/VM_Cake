@@ -24,7 +24,28 @@ class VideosController extends AppController {
 		if (!$video) {
 			throw new NotFoundException(__('Invalid video'));
 		}
+		
 		$this->set('video', $video);
+		
+		/******************************
+		
+			positions
+		
+		******************************/
+		$this->loadModel('Position');
+			
+		$positions = $this->Position->find('all',
+							array(
+								'conditions' => array(
+													'Position.video_id' => $id
+			
+												),
+								'order' => array('Position.point ASC')
+							)
+		);
+		
+		$this->set('positions', $positions);
+		
 	}
 
 	public function add() {

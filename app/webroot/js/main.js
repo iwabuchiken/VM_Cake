@@ -257,6 +257,7 @@ function conv_Float_to_TimeLabel(float_val) {
     if (seconds < 10) {seconds = "0"+seconds;}
 //    var time    = hours+':'+minutes+':'+seconds;
     //REF split http://www.w3schools.com/jsref/jsref_split.asp
+    //REF toFixed http://stackoverflow.com/questions/661562/how-to-format-a-float-in-javascript answered Mar 19 '09 at 9:42
     var time    = hours+':'+minutes+':'+seconds + "."
     			+ decimal.toFixed(5).toString().split(".")[1];
     
