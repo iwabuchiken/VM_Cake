@@ -124,11 +124,13 @@ class VideosController extends AppController {
 		
 		if ($res == true) {
 		
-			$result = "Saved: ".$result;
+// 			$result = "Saved: ".$result;
+			$arr = array ('saved'=> true,'point'=> $result, 'video_id' => $video_id);
 			
 		} else {
 		
-			$result = "Not saved: ".$result;
+// 			$result = "Not saved: ".$result;
+			$arr = array ('saved'=> false,'point'=> $result, 'video_id' => $video_id);
 		
 		}
 
@@ -141,7 +143,11 @@ class VideosController extends AppController {
 		
 // 		debug($result);
 		
-		$this->set('result', $result);
+		// set to return response=error
+// 		$arr = array ('response'=>'error','comment'=>'test comment here');
+		
+		$this->set('arr', $arr);
+// 		$this->set('result', $result);
 		
 		$this->render('/Elements/videos/js/retrieve_CurrentTime');
 		

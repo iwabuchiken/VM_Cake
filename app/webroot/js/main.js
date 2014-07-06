@@ -96,11 +96,13 @@ function stop() {
 
 }
 
-function seek($position) {
+function seek(position) {
+//	function seek($position) {
 
   if (ytplayer) {
 
-	ytplayer.seekTo($position);
+	ytplayer.seekTo(position);
+//	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
 //		ytplayer.seekTo(10);
@@ -145,11 +147,17 @@ function saveCurrentTime_js() {
 	    type: "GET",
 	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
 	    data: {curTime: curTime, video_id: video_id},
+	    
+	    //REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
+	    dataType: "json",
 	    timeout: 10000
 	    
 	}).done(function(data, status, xhr) {
 		
-		$("#jqarea").text(data);
+//		$("#jqarea").text(data);
+		
+		alert(conv_Float_to_TimeLabel(data.point));
+		addPosition_ToList(data.point);
 		
 //		seek(data);
 		
@@ -185,10 +193,72 @@ function test_AddPosition() {
 	
 	var current_time = getCurrentTime();
 	
-	$("table#table_poslist").append(
-					"<tr><td id=\"poslist_1\">"
-					//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
-//					+ (new Date().toTimeString()) + "</td></tr>");
-					+ current_time.toString() + "</td></tr>");
+	var tag = "<tr><td id=\"poslist_1\" onclick=\"seek("
+		+ current_time.toString()
+		+ ")\">"
+		//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
+//		+ (new Date().toTimeString()) + "</td></tr>");
+		+ current_time.toString() + "</td></tr>";
 	
+//	alert(tag);
+	
+	$("table#table_poslist").append(tag);
+//	$("table#table_poslist").append(
+//					"<tr><td id=\"poslist_1\" onclick=\"seek("
+//					.current_time.toString()
+//					.")\">"
+//					//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
+////					+ (new Date().toTimeString()) + "</td></tr>");
+//					+ current_time.toString() + "</td></tr>");
+	
+}
+
+function addPosition_ToList(position) {
+	
+//	var current_time = getCurrentTime();
+	
+	var tag = "<tr><td id=\"poslist_1\" onclick=\"seek("
+		+ position.toString()
+//		+ position.toFixed(5).toString()
+		+ ")\">"
+		//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
+//		+ (new Date().toTimeString()) + "</td></tr>");
+//		+ position.toString() + "</td></tr>";
+		+ conv_Float_to_TimeLabel(position) + "</td></tr>";
+	
+//	alert(tag);
+	
+	$("table#table_poslist").append(tag);
+//	$("table#table_poslist").append(
+//					"<tr><td id=\"poslist_1\" onclick=\"seek("
+//					.current_time.toString()
+//					.")\">"
+//					//REF http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-with-format-hhmmss answered Sep 27 '12 at 1:22
+////					+ (new Date().toTimeString()) + "</td></tr>");
+//					+ current_time.toString() + "</td></tr>");
+	
+}
+
+function conv_Float_to_TimeLabel(float_val) {
+	
+	//REF http://www.w3schools.com/jsref/jsref_floor.asp
+	var integer = Math.floor(float_val);
+	
+	var decimal = float_val - integer;
+	
+//	var sec_num = parseInt(this, 10); // don't forget the second param
+    var sec_num = integer; // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+//    var time    = hours+':'+minutes+':'+seconds;
+    //REF split http://www.w3schools.com/jsref/jsref_split.asp
+    var time    = hours+':'+minutes+':'+seconds + "."
+    			+ decimal.toFixed(5).toString().split(".")[1];
+    
+    return time;
 }
