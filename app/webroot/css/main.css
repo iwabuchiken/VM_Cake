@@ -49,6 +49,18 @@ background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
     background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
 */
 
+td {
+	
+	border: 1px solid black;
+	
+}
+
+th {
+	
+	border: 1px solid blue;
+	
+}
+
 table.table_show {
 	
 	width: 60%;

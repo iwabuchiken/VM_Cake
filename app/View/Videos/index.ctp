@@ -3,6 +3,7 @@
 		<tr>
 				<th>Id</th>
 				<th>Title</th>
+				<th>Genre</th>
 				<th>Url</th>
 		</tr>
 
@@ -19,7 +20,15 @@
 										$video['Video']['id'])
 									); ?>
 				</td>
-				<td><?php echo $video['Video']['url']; ?></td>
+				<td><?php echo $video['Genre']['name']; ?></td>
+				
+				<td>
+					<?php //echo $video['Video']['url']; ?>
+					<?php echo $this->Html->link($video['Video']['url'],
+									$url = $video['Video']['url']
+									); ?>
+				</td>
+				
 		</tr>
 		<?php endforeach; ?>
 		<?php unset($video); ?>

@@ -6,7 +6,7 @@ class VideosController extends AppController {
 	public function index() {
 		$this->set('videos', $this->Video->find('all'));
 		
-		debug(Utils::get_dPath_Log());
+// 		debug(Utils::get_dPath_Log());
 		
 		Utils::write_Log(
 					Utils::get_dPath_Log(), 
@@ -35,6 +35,27 @@ class VideosController extends AppController {
 				return $this->redirect(array('action' => 'index'));
 			}
 			$this->Session->setFlash(__('Unable to add your video.'));
+		} else {
+			
+			$this->loadModel('Genre');
+			
+			$genres = $this->Genre->find('all');
+			
+			$select_Genres = array();
+			
+			foreach ($genres as $genre) {
+					
+				$genre_Name = $genre['Genre']['name'];
+				$genre_Id = $genre['Genre']['id'];
+					
+				$select_Genres[$genre_Id] = $genre_Name;
+					
+			}
+				
+			asort($select_Genres);
+			
+			$this->set('genre_names', $select_Genres);
+				
 		}
 	}
 
