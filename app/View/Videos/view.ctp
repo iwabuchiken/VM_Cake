@@ -1,22 +1,7 @@
 <h1>Title: <?php echo $this->Html->link($video['Video']['title'],
 										$url = $video['Video']['url']
 										 
-									); ?>
-									
-	 / (position = <?php echo count($positions) ?>)
-</h1>
-
-<div class="test">
-
-	<?php
-	
-// // 		echo "This helper is to make the content ".$this->Mytest->testFunction('bold');
-// 		echo $this->Mytest->testFunction($positions[4]['Position']['point']);
-// 		///Will print “This helper is to make the content bold”.
- 	?>
-
-</div>
-
+									); ?></h1>
 <?php echo $this->element('videos/video_view_controller'); ?>
 
 <br>
@@ -40,8 +25,23 @@
 <script type="text/javascript" src="swfobject.js"></script>    
 
 <div>
+  	<table id="table_poslist">
+  	
+  		<tr>
+  			<td id="poslist_1">
+  				123
+  			</td>
+  		</tr>
+  		
+  		<tr>
+  			<td id="poslist_2">
+  				123
+  			</td>
+  		</tr>
+  		
+  	</table>
 
-	<?php echo $this->element('videos/view/view_table_poslist')?>
+
 
   <div id="ytplayer">
 <!--   <div id="ytapiplayer"> -->

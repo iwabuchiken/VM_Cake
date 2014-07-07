@@ -130,25 +130,9 @@ function test_Regex() {
 	
 }
 
-function test_Float_to_Integer() {
-	
-	$float = 4.567;
-	
-	$integer = floor($float);
-	
-	echo "\$float = $float";
-	echo "\n";
-	
-	echo "\$integer = $integer";
-	echo "\n";
-	
-}
-
 function execute() {
 	
-// 	test_Regex();
-	
-	test_Float_to_Integer();
+	test_Regex();
 	
 }
 
