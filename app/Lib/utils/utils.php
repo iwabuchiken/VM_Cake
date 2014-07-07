@@ -181,6 +181,61 @@
 			// 					array(ROOT, APP_DIR, WEBROOT_DIR, $this->dbName_Local));
 				
 		}
+
+		public static function
+		conv_Float_to_TimeLabel ($float_time) {
+				
+			// 			$integer = (int) $float_time;
+			// 			$integer = floor($float_time) / 1;
+			$integer = floor($float_time);
+			// 			$integer = (int)intval($float_time, 10);
+			// 			$integer = (int)intval($float_time);
+			// 			$integer = intval($float_time);
+			// 			$integer = (intval)floor($float_time);
+			// 			$integer = floor($float_time);
+				
+			$decimal = $float_time - $integer;
+				
+			$sec_num = $integer;
+			// 			$sec_num = parseInt($float_time, 10); // don't forget the $second param
+			$hours   = floor($sec_num / 3600);
+			$minutes = floor(($sec_num - ($hours * 3600)) / 60);
+			$seconds = $sec_num - ($hours * 3600) - ($minutes * 60);
+		
+			if ($hours   < 10) {$hours_str   = "0$hours";}
+			else {$hours_str = $hours;}
+		
+			if ($minutes < 10) {$minutes_str = "0$minutes";}
+			else {$minutes_str = $minutes;}
+				
+			if ($seconds < 10) {$seconds_str = "0".number_format(($seconds + $decimal), 3, '.', '');}
+			else {$seconds_str = number_format(($seconds + $decimal), 3, '.', '');}
+			// 				else {$seconds_str = ($seconds + $decimal);}
+		
+			// 			$time    = "$hours:$minutes:$seconds.".number_format($decimal, 3, '.', '');
+			//REF http://www.php.net/manual/en/function.number-format.php
+			// 			$time    = "$hours_str:$minutes_str";
+				
+			if ($hours == "00") {
+					
+				$time    = "$minutes_str:$seconds_str";
+		
+			} else {
+					
+				$time    = "$hours_str:$minutes_str:$seconds_str";
+					
+			}
+			;
+		
+			// 			$time    = "$hours_str:$minutes_str:$seconds_str";
+			// 			$time    = "$hours:$minutes:"
+			// 						.number_format(($seconds + $decimal), 3, '.', '');
+			// 			$time    = "$integer.$decimal";
+				
+			return $time;
+				
+		}//conv_Float_to_TimeLabel ($float_time)
+		
 		
 // 		public static function
 // 		conv_Float_to_TimeLabel ($float_time) {

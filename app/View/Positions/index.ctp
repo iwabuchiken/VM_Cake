@@ -20,7 +20,16 @@
 										$position['Position']['id'])
 									); ?>
 				</td>
-				<td><?php echo $position['Position']['point']; ?></td>
+				
+				<td>
+				
+					<?php 
+						echo $this->Mytest->testFunction($position['Position']['point'])
+// 						echo $position['Position']['point']; 
+?>
+					
+				</td>
+				
 				<td><?php echo $position['Position']['created_at']; ?></td>
 		</tr>
 		<?php endforeach; ?>

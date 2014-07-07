@@ -10,10 +10,17 @@ Table
 <!--   			<td id="poslist_1"> -->
   				<?php //echo $position['Position']['point']; 
 					
+					$url = $video['Video']['url'];
+					
+					parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+		
 					$tag = "<tr><td id=\"poslist_1\" onclick=\"seek("
 							.$position['Position']['point']
+// 							.", "
+// 							."\"".$my_array_of_vars['v']."\""
 							.")\">"
   							.$this->Mytest->testFunction($position['Position']['point'])
+//   							."(".$my_array_of_vars['v'].")"
   							."</td></tr>";
 							;
 

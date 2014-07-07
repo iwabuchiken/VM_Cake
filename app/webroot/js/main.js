@@ -96,11 +96,14 @@ function stop() {
 
 }
 
+//function seek(position, id) {
 function seek(position) {
 //	function seek($position) {
 
   if (ytplayer) {
 
+//	ytplayer.cueVideoById(id, 0, "medium");
+	  
 	ytplayer.seekTo(position);
 //	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
