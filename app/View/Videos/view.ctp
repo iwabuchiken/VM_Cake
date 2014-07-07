@@ -6,6 +6,16 @@
 	 / (position = <?php echo count($positions) ?>)
 </h1>
 
+<div class="test">
+
+	<?php
+	
+// // 		echo "This helper is to make the content ".$this->Mytest->testFunction('bold');
+// 		echo $this->Mytest->testFunction($positions[4]['Position']['point']);
+// 		///Will print “This helper is to make the content bold”.
+ 	?>
+
+</div>
 
 <?php echo $this->element('videos/video_view_controller'); ?>
 

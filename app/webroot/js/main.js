@@ -101,7 +101,19 @@ function seek(position) {
 
   if (ytplayer) {
 
-	ytplayer.seekTo(position);
+//	  alert("status => " + ytplayer.getPlayerState());
+	  
+//	  if(ytplayer.getPlayerState() == -1) {
+//		  
+//		  alert("status => " + ytplayer.getPlayerState());
+//		  
+//		  ytplayer.play();
+//		  
+//	  }
+//	  ytplayer.play();
+	  
+	  ytplayer.seekTo(position);
+	
 //	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);

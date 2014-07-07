@@ -12,7 +12,7 @@
 					$tag = "<tr><td id=\"poslist_1\" onclick=\"seek("
 							.$position['Position']['point']
 							.")\">"
-  							.$position['Position']['point']
+  							.$this->Mytest->testFunction($position['Position']['point'])
   							."</td></tr>";
 							;
 

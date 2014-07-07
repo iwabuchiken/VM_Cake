@@ -1,7 +1,8 @@
 <?php
 
 class VideosController extends AppController {
-	public $helpers = array('Html', 'Form');
+	public $helpers = array('Html', 'Form', 'Mytest');
+// 	public $helpers = array('Html', 'Form');
 
 	public function index() {
 		$this->set('videos', $this->Video->find('all'));
