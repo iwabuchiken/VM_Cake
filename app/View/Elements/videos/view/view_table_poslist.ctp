@@ -1,4 +1,5 @@
-  	<table id="table_poslist">
+Table
+<table id="table_poslist">
   	
   	<?php 
 //   		for ($i = 0; $i < 10; $i++) {
