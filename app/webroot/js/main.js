@@ -68,7 +68,15 @@ function play() {
 	
 	  if (ytplayer) {
 	
-		ytplayer.playVideo();
+		  var current_img_src = $("img#button_pause").attr("src");
+		  
+		  var current_img_new = 
+			  		current_img_src.replace("player_play.png", "player_pause.png");
+		  
+		  $("img#button_pause").attr("onclick", "pause()");
+		  $("img#button_pause").attr("src", current_img_new);
+		  
+		  ytplayer.playVideo();
 	
 	  }
 	
@@ -77,8 +85,16 @@ function play() {
 function pause() {
 	
   if (ytplayer) {
-
-	ytplayer.pauseVideo();
+	  
+	  var current_img_src = $("img#button_pause").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_pause.png", "player_play.png");
+	  
+	  $("img#button_pause").attr("onclick", "play()");
+	  $("img#button_pause").attr("src", current_img_new);
+	  
+	  ytplayer.pauseVideo();
 
   }
 
@@ -90,6 +106,15 @@ function stop() {
 
   if (ytplayer) {
 
+	  var current_img_src = $("img#button_pause").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_pause.png", "player_play.png");
+	  
+	  $("img#button_pause").attr("onclick", "play()");
+	  $("img#button_pause").attr("src", current_img_new);
+
+	  
 	ytplayer.stopVideo();
 
   }

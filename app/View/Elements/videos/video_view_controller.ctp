@@ -32,7 +32,9 @@
 			src="<?php echo $url_src; ?>/player_pause.png" 
 			alt="play"
 			onclick="pause();"
-			class="button_controller">
+			class="button_controller"
+			id="button_pause"
+			>
     </td>
 
     <td class="td_controller">
