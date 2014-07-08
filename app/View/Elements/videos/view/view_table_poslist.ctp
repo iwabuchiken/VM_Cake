@@ -2,6 +2,8 @@
   	
   	<?php 
   	
+  		$count = 0;
+  	
 		foreach ($positions as $position):
 		
 			echo "<tr>";
@@ -12,7 +14,9 @@
 			
 			$tag_Point = "<td onclick=\"seek("
 					.$position['Position']['point']
-					.")\">"
+					.")"."\""
+					." id=\"position_$count\""
+					.">"
 					.$this->Mytest->testFunction($position['Position']['point'])
 					."</td>";
 	
@@ -28,6 +32,8 @@
 			
 			echo "</tr>";
 		
+			$count ++;
+			
   		endforeach;
   	
   	?>

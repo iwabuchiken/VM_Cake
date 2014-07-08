@@ -62,6 +62,14 @@
 			onclick="stop();"
 			class="button_controller">
 	  	
+		<img 
+			src="<?php echo $url_src; ?>/player_repeat.png" 
+			alt="play"
+			onclick="repeat(0);"
+			class="button_controller"
+			id="button_repeat"
+			>
+	  	
   	</td>
   	
   	<td class="td_controller">

@@ -97,7 +97,8 @@ function stop() {
 }
 
 //function seek(position, id) {
-function seek(position) {
+function 
+seek(position) {
 //	function seek($position) {
 
   if (ytplayer) {
@@ -105,14 +106,37 @@ function seek(position) {
 //	ytplayer.cueVideoById(id, 0, "medium");
 	  
 	ytplayer.seekTo(position);
+	
+	$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
+	
 //	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
 //		ytplayer.seekTo(10);
-
+	
   }
 
-}
+}//seek(position, fromRepeatButton)
+
+function 
+seek_FromRepeatButton(position) {
+//	function seek($position) {
+	
+	if (ytplayer) {
+		
+//	ytplayer.cueVideoById(id, 0, "medium");
+		
+		ytplayer.seekTo(position);
+		
+		ytplayer.playVideo();
+//		ytplayer.play();
+		
+//		$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
+//		$("img#button_repeat").prop("onclick", "repeat(" + position + ")");
+			
+	}
+	
+}//seek_FromRepeatButton(position, fromRepeatButton)
 
 function sort() {
 	
@@ -338,4 +362,12 @@ function conv_Float_to_TimeLabel(float_val) {
     			+ decimal.toFixed(5).toString().split(".")[1];
     
     return time;
+}
+
+function repeat(position) {
+	
+	seek_FromRepeatButton(position);
+//	seek_FromRepeatButton(position, true);
+//	seek(position, true);
+	
 }

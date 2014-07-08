@@ -68,6 +68,52 @@ class VideosController extends AppController {
 		
 		$this->set('positions', $positions);
 		
+		/******************************
+		
+			test: SimpleXMLElement
+		
+		******************************/
+		$this->_test_SimpleXMLElement();
+// 		$this->_test_DOMXML();
+
+		
+	}
+	
+	public function _test_DOMXML() {
+		
+		$text = "台湾・台北（Taipei）にある日本の対台湾窓口機関、交流協会台北事務所前で7日、台湾労働党や中台統一派団体のメンバーら数十人が、安倍政権の集団的自衛権行使の容認など平和憲法に反する動きに対し抗議活動を行った";
+		// 		$text = "南スーダンの国連平和維持活動（ＰＫＯ）に派遣された陸上自衛隊第５次派遣施設隊長";
+		$params = "sentence=$text";
+		
+		$url = "http://chasen.org/~taku/software/mecapi/mecapi.cgi";
+		
+		$html = file_get_contents("$url?$params");
+
+		$xmlDoc = new DOMDocument();
+		
+		$xmlDoc->loadXML($html);
+// 		$xmlDoc->loadHTML($html);
+		
+		$xmlDom = $xmlDoc->documentElement;
+		
+		$this->set('xmlDom', $xmlDom);
+		
+	}
+	
+	public function _test_SimpleXMLElement() {
+
+		$text = "台湾・台北（Taipei）にある日本の対台湾窓口機関、交流協会台北事務所前で7日、台湾労働党や中台統一派団体のメンバーら数十人が、安倍政権の集団的自衛権行使の容認など平和憲法に反する動きに対し抗議活動を行った";
+		// 		$text = "南スーダンの国連平和維持活動（ＰＫＯ）に派遣された陸上自衛隊第５次派遣施設隊長";
+		$params = "sentence=$text";
+		
+		$url = "http://chasen.org/~taku/software/mecapi/mecapi.cgi";
+		
+		$html = file_get_contents("$url?$params");
+		
+		$xml = simplexml_load_string($html);
+		
+		$this->set('xml', $xml);
+		
 	}
 
 	public function add() {
