@@ -168,7 +168,8 @@ class VideosController extends AppController {
 		
 	}
 	
-	public function save_CurrentTime() {
+	public function 
+	save_CurrentTime() {
 		
 		$this->layout = 'plain';
 		
@@ -189,12 +190,17 @@ class VideosController extends AppController {
 		if ($res == true) {
 		
 // 			$result = "Saved: ".$result;
-			$arr = array ('saved'=> true,'point'=> $result, 'video_id' => $video_id);
+// 			$arr = array ('saved'=> true,'point'=> $result, 'video_id' => $video_id);
+			$arr = "<tr>"
+					."<td>".Utils::conv_Float_to_TimeLabel($result)."</td>"
+					."<td></td>"
+					;
 			
 		} else {
 		
 // 			$result = "Not saved: ".$result;
-			$arr = array ('saved'=> false,'point'=> $result, 'video_id' => $video_id);
+// 			$arr = array ('saved'=> false,'point'=> $result, 'video_id' => $video_id);
+			$arr = "Can't save position";
 		
 		}
 
@@ -213,10 +219,11 @@ class VideosController extends AppController {
 		$this->set('arr', $arr);
 // 		$this->set('result', $result);
 		
-		$this->render('/Elements/videos/js/retrieve_CurrentTime');
+		$this->render('/Elements/videos/js/return_SingleEntry');
+// 		$this->render('/Elements/videos/js/retrieve_CurrentTime');
 		
 		
-	}
+	}//save_CurrentTime()
 
 	public function 
 	save_Position($result, $video_id) {

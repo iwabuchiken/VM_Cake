@@ -144,23 +144,20 @@ function saveCurrentTime_js() {
 	$.ajax({
 		
 	    url: url,
-//	    url: "/cake_apps/VM_Cake/videos/save_CurrentTime",
-//	    url: "/VM_Cake/videos/save_CurrentTime",
-//	    url: "/VM_Cake/videos/save_CurrentTime?curTime=" + curTime,
 	    type: "GET",
 	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
 	    data: {curTime: curTime, video_id: video_id},
 	    
 	    //REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
-	    dataType: "json",
+//	    dataType: "json",
 	    timeout: 10000
 	    
 	}).done(function(data, status, xhr) {
 		
-//		$("#jqarea").text(data);
+//		alert(conv_Float_to_TimeLabel(data.point));
+//		addPosition_ToList(data.point);
 		
-		alert(conv_Float_to_TimeLabel(data.point));
-		addPosition_ToList(data.point);
+		saveCurrentTime_js__Done(data, status, xhr);
 		
 //		seek(data);
 		
@@ -171,7 +168,16 @@ function saveCurrentTime_js() {
 	});
 	
 	
-}
+}//function saveCurrentTime_js()
+
+function 
+saveCurrentTime_js__Done(data, status, xhr) {
+	
+	$("#table_poslist").append(data);
+	
+//	addPosition_ToList(data.point);
+	
+}//saveCurrentTime_js__Done(data, status, xhr)
 
 function getCurrentTime() {
 	
