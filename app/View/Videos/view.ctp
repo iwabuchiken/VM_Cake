@@ -7,12 +7,12 @@
 </h1>
 
 
-<?php echo $this->element('videos/video_view_controller'); ?>
+<?php //echo $this->element('videos/video_view_controller'); ?>
 
 <br>
 <br>
 
-// <?php
+ <?php
 // 	$subject = $video['Video']['url'];
 // // 	$subject = "123?v=aaaaAAAAAbbb&xyz";
 	
@@ -31,7 +31,17 @@
 
 <div>
 
-	<?php echo $this->element('videos/view/view_table_poslist')?>
+	<div id="controller">
+	
+		<?php echo $this->element('videos/video_view_controller'); ?>
+		
+	</div>
+
+	<div>
+		
+		<?php echo $this->element('videos/view/view_table_poslist')?>
+		
+	</div>
 
   <div id="ytplayer">
 <!--   <div id="ytapiplayer"> -->

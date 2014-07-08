@@ -1,16 +1,19 @@
-<a href="javascript:void(0);" 
-	onclick="play();" 
-	class="button" id="button_play">
+<div>
+	<a href="javascript:void(0);" 
+		onclick="play();" 
+		class="button_controller" id="button_play">
+		
+		Play</a>
 	
-	Play</a>
+	<a href="javascript:void(0);" onclick="pause();" class="button_controller">
+	
+		Pause</a>
+</div>
 
-<a href="javascript:void(0);" onclick="pause();" class="button">
-
-	Pause</a>
 
 <a href="javascript:void(0);" 
 	onclick="stop();" 
-	class="button" id="button_stop">
+	class="button_controller" id="button_stop">
 	
 	Stop
 	
@@ -18,9 +21,9 @@
 
 <a href="javascript:void(0);" 
 	onclick="saveCurrentTime_js();" 
-	class="button" id="button_save_current_time">
+	class="button_controller" id="button_save_current_time">
 	
-	Save current time
+	Save time
 	
 </a>
 
@@ -42,11 +45,3 @@
 	);
 
 ?>
-
-<a href="javascript:void(0);" 
-	onclick="test_AddPosition();" 
-	class="button">
-	
-	Add position to list
-	
-</a>
