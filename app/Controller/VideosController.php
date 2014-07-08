@@ -279,4 +279,50 @@ class VideosController extends AppController {
 // 		return $point_1 < $point_2;
 		
 	}
+
+	public function
+	sort_PosList() {
+		/******************************
+		
+			layout
+		
+		******************************/
+		$this->layout = 'plain';
+		
+		/******************************
+		
+			get: parameter
+		
+		******************************/
+		$id = $this->request->query['video_id'];
+		
+		/******************************
+		
+		positions
+		
+		******************************/
+		$this->loadModel('Position');
+			
+		$positions = $this->Position->find('all',
+			//REF conditions http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#find
+			array(
+				'conditions' => array(
+						'Position.video_id' => $id
+							
+				)
+			)
+		);
+		
+		$positions = $this->sort_Position_by_Point($positions);
+		
+		//REF http://blogs.bigfish.tv/adam/2008/03/24/sorting-with-setsort-in-cakephp-12/
+		//REF referer http://cakephp.1045679.n5.nabble.com/Using-usort-in-Cake-td1327099.html Aug 10, 2009; 11:32pm
+		// 		$positions = Set::sort($positions, '{n}.Position.point', 'asc');
+		
+		$this->set('positions', $positions);		
+
+		$this->render('/Elements/videos/js/return_AllEntries');
+		
+	}//sort_PosList()
+
 }

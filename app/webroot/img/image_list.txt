@@ -1,0 +1,3 @@
+1	player_play.png	1404800316_player_play.png	
+2	player_stop.png	1404800854_player_stop.png	https://www.iconfinder.com/icons/48794/player_stop_icon#size=48
+3	player_pause.png	1404801021_player_pause.png	https://www.iconfinder.com/icons/48790/pause_player_icon#size=48

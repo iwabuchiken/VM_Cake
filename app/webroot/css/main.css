@@ -52,6 +52,16 @@ a.button_controller {
     cursor:pointer;
 }
 
+img.button_controller {
+    
+    cursor:pointer;
+    
+    width:	42px;
+    
+    margin-right: 15px;
+    
+}
+
 a#button_play {
 	
     color: blue;
@@ -78,6 +88,12 @@ background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F5F5F5),to(#F1F1F1));
 td {
 	
 	border: 1px solid black;
+	
+}
+
+td.td_controller {
+	
+	border: 1px solid #FFFFFF;
 	
 }
 

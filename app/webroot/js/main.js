@@ -113,10 +113,8 @@ function seek(position) {
   }
 
 }
-function saveCurrentTime_js() {
-	
-	var curTime = ytplayer.getCurrentTime();
-//	var curTime = getCurrentTime();
+
+function sort() {
 	
 	var hostname = window.location.hostname;
 	
@@ -124,11 +122,11 @@ function saveCurrentTime_js() {
 	
 	if (hostname == "benfranklin.chips.jp") {
 		
-		url = "/cake_apps/VM_Cake/videos/save_CurrentTime";
+		url = "/cake_apps/VM_Cake/videos/sort_PosList";
 		
 	} else {
 
-		url = "/VM_Cake/videos/save_CurrentTime";
+		url = "/VM_Cake/videos/sort_PosList";
 
 	}
 	
@@ -146,7 +144,7 @@ function saveCurrentTime_js() {
 	    url: url,
 	    type: "GET",
 	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
-	    data: {curTime: curTime, video_id: video_id},
+	    data: {video_id: video_id},
 	    
 	    //REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
 //	    dataType: "json",
@@ -157,24 +155,94 @@ function saveCurrentTime_js() {
 //		alert(conv_Float_to_TimeLabel(data.point));
 //		addPosition_ToList(data.point);
 		
-		saveCurrentTime_js__Done(data, status, xhr);
+		sort__Done(data, status, xhr);
 		
 //		seek(data);
 		
 	}).fail(function(xhr, status, error) {
 		
-	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+		alert(xhr.status);
 	    
 	});
 	
 	
 }//function saveCurrentTime_js()
 
+function sort__Done(data, status, xhr) {
+	
+//	alert("Sort => done");
+	$("#table_poslist").html(data);
+	
+}
+
+
+function saveCurrentTime_js() {
+	
+	var curTime = ytplayer.getCurrentTime();
+//	var curTime = getCurrentTime();
+	
+	var hostname = window.location.hostname;
+	
+	var url;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		url = "/cake_apps/VM_Cake/videos/save_CurrentTime";
+		
+	} else {
+		
+		url = "/VM_Cake/videos/save_CurrentTime";
+		
+	}
+	
+//	alert(hostname);
+	
+//	var video_id = $("#video_id_hidden").text();
+	
+	//REF http://stackoverflow.com/questions/4582423/get-value-of-input-tag-using-jquery answered Jan 3 '11 at 6:14
+	var video_id = $("#video_id_hidden").val();
+	
+	
+	
+	$.ajax({
+		
+		url: url,
+		type: "GET",
+		//REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+		data: {curTime: curTime, video_id: video_id},
+		
+		//REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
+//	    dataType: "json",
+		timeout: 10000
+		
+	}).done(function(data, status, xhr) {
+		
+//		alert(conv_Float_to_TimeLabel(data.point));
+//		addPosition_ToList(data.point);
+		
+		saveCurrentTime_js__Done(data, status, xhr, curTime);
+		
+//		seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+		$("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+		
+	});
+	
+	
+}//function saveCurrentTime_js()
+
 function 
-saveCurrentTime_js__Done(data, status, xhr) {
+saveCurrentTime_js__Done(data, status, xhr, curTime) {
 	
 	$("#table_poslist").append(data);
 	
+	alert("Position saved => " + conv_Float_to_TimeLabel(curTime));
+	
+	sort();
+//	alert("Position saved => " + curTime);
 //	addPosition_ToList(data.point);
 	
 }//saveCurrentTime_js__Done(data, status, xhr)
