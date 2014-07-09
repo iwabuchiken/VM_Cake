@@ -68,7 +68,15 @@ function play() {
 	
 	  if (ytplayer) {
 	
-		ytplayer.playVideo();
+		  var current_img_src = $("img#button_play").attr("src");
+		  
+		  var current_img_new = 
+			  		current_img_src.replace("player_play.png", "player_pause.png");
+		  
+		  $("img#button_play").attr("onclick", "pause()");
+		  $("img#button_play").attr("src", current_img_new);
+		  
+		  ytplayer.playVideo();
 	
 	  }
 	
@@ -77,8 +85,16 @@ function play() {
 function pause() {
 	
   if (ytplayer) {
-
-	ytplayer.pauseVideo();
+	  
+	  var current_img_src = $("img#button_play").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_pause.png", "player_play.png");
+	  
+	  $("img#button_play").attr("onclick", "play()");
+	  $("img#button_play").attr("src", current_img_new);
+	  
+	  ytplayer.pauseVideo();
 
   }
 
@@ -90,6 +106,15 @@ function stop() {
 
   if (ytplayer) {
 
+	  var current_img_src = $("img#button_play").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_pause.png", "player_play.png");
+	  
+	  $("img#button_play").attr("onclick", "play()");
+	  $("img#button_play").attr("src", current_img_new);
+
+	  
 	ytplayer.stopVideo();
 
   }
@@ -97,7 +122,8 @@ function stop() {
 }
 
 //function seek(position, id) {
-function seek(position) {
+function 
+seek(position) {
 //	function seek($position) {
 
   if (ytplayer) {
@@ -105,14 +131,58 @@ function seek(position) {
 //	ytplayer.cueVideoById(id, 0, "medium");
 	  
 	ytplayer.seekTo(position);
+	
+	$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
+	
+	  var current_img_src = $("img#button_play").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_play.png", "player_pause.png");
+	  
+	  $("img#button_play").attr("onclick", "pause()");
+	  $("img#button_play").attr("src", current_img_new);
+	  
+	  ytplayer.playVideo();
+
+	
 //	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
 //		ytplayer.seekTo(10);
-
+	
   }
 
-}
+}//seek(position, fromRepeatButton)
+
+function 
+seek_FromRepeatButton(position) {
+//	function seek($position) {
+	
+	if (ytplayer) {
+		
+//	ytplayer.cueVideoById(id, 0, "medium");
+		
+		  var current_img_src = $("img#button_play").attr("src");
+		  
+		  //REF replace http://stackoverflow.com/questions/2145988/how-do-i-do-string-replace-in-javascript-to-convert-9-61-to-961 answered Jan 27 '10 at 10:19
+		  var current_img_new = 
+			  		current_img_src.replace("player_play.png", "player_pause.png");
+		  
+		  //REF attr http://api.jquery.com/attr/#attr2
+		  $("img#button_play").attr("onclick", "pause()");
+		  $("img#button_play").attr("src", current_img_new);
+		
+		ytplayer.seekTo(position);
+		
+		ytplayer.playVideo();
+//		ytplayer.play();
+		
+//		$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
+//		$("img#button_repeat").prop("onclick", "repeat(" + position + ")");
+			
+	}
+	
+}//seek_FromRepeatButton(position, fromRepeatButton)
 
 function sort() {
 	
@@ -339,3 +409,26 @@ function conv_Float_to_TimeLabel(float_val) {
     
     return time;
 }
+
+function repeat(position) {
+	
+	seek_FromRepeatButton(position);
+//	seek_FromRepeatButton(position, true);
+//	seek(position, true);
+	
+}
+
+function scroll_tobottom() {
+//	function scroll_ToBottom() {
+
+//	alert("Moving the scroll");
+	
+//	$("img#scroll_ToBottom")
+	var objDiv = document.getElementById("div_poslist");
+//	var objDiv = document.getElementById("scroll_tobottom");
+	
+//	alert(objDiv + "/height = " + objDiv.scrollHeight);
+//	var objDiv = document.getElementById("scroll_ToBottom");
+	objDiv.scrollTop = objDiv.scrollHeight;
+}
+
