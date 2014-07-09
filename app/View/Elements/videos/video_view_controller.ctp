@@ -43,7 +43,13 @@
 			alt="play"
 			onclick="stop();"
 			class="button_controller">
-		
+		||
+		<img 
+			src="<?php echo $url_src; ?>/player_stop.png" 
+			alt="play"
+			onclick="scroll_tobottom();"
+			id="scroll_ToBottom"
+			class="button_controller">
 		
 			
     </td>

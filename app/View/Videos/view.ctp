@@ -35,11 +35,13 @@
 		<br>
 		<?php echo $this->element('videos/video_view_controller'); ?>
 		
+		<?php echo $this->element('videos/view/view_table_poslist')?>
+		
 	</div>
 	
 	<div>
 		
-		<?php echo $this->element('videos/view/view_table_poslist')?>
+		<?php //echo $this->element('videos/view/view_table_poslist')?>
 		
 	</div>
 	

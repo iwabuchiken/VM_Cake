@@ -134,6 +134,17 @@ seek(position) {
 	
 	$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
 	
+	  var current_img_src = $("img#button_play").attr("src");
+	  
+	  var current_img_new = 
+		  		current_img_src.replace("player_play.png", "player_pause.png");
+	  
+	  $("img#button_play").attr("onclick", "pause()");
+	  $("img#button_play").attr("src", current_img_new);
+	  
+	  ytplayer.playVideo();
+
+	
 //	ytplayer.seekTo($position);
 //		ytplayer.seekTo(<?php //echo $position;?>);
 //		ytplayer.seekTo(<?php //echo 20;?>);
@@ -406,3 +417,18 @@ function repeat(position) {
 //	seek(position, true);
 	
 }
+
+function scroll_tobottom() {
+//	function scroll_ToBottom() {
+
+//	alert("Moving the scroll");
+	
+//	$("img#scroll_ToBottom")
+	var objDiv = document.getElementById("div_poslist");
+//	var objDiv = document.getElementById("scroll_tobottom");
+	
+//	alert(objDiv + "/height = " + objDiv.scrollHeight);
+//	var objDiv = document.getElementById("scroll_ToBottom");
+	objDiv.scrollTop = objDiv.scrollHeight;
+}
+
