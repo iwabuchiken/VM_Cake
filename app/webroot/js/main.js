@@ -68,13 +68,13 @@ function play() {
 	
 	  if (ytplayer) {
 	
-		  var current_img_src = $("img#button_pause").attr("src");
+		  var current_img_src = $("img#button_play").attr("src");
 		  
 		  var current_img_new = 
 			  		current_img_src.replace("player_play.png", "player_pause.png");
 		  
-		  $("img#button_pause").attr("onclick", "pause()");
-		  $("img#button_pause").attr("src", current_img_new);
+		  $("img#button_play").attr("onclick", "pause()");
+		  $("img#button_play").attr("src", current_img_new);
 		  
 		  ytplayer.playVideo();
 	
@@ -86,13 +86,13 @@ function pause() {
 	
   if (ytplayer) {
 	  
-	  var current_img_src = $("img#button_pause").attr("src");
+	  var current_img_src = $("img#button_play").attr("src");
 	  
 	  var current_img_new = 
 		  		current_img_src.replace("player_pause.png", "player_play.png");
 	  
-	  $("img#button_pause").attr("onclick", "play()");
-	  $("img#button_pause").attr("src", current_img_new);
+	  $("img#button_play").attr("onclick", "play()");
+	  $("img#button_play").attr("src", current_img_new);
 	  
 	  ytplayer.pauseVideo();
 
@@ -106,13 +106,13 @@ function stop() {
 
   if (ytplayer) {
 
-	  var current_img_src = $("img#button_pause").attr("src");
+	  var current_img_src = $("img#button_play").attr("src");
 	  
 	  var current_img_new = 
 		  		current_img_src.replace("player_pause.png", "player_play.png");
 	  
-	  $("img#button_pause").attr("onclick", "play()");
-	  $("img#button_pause").attr("src", current_img_new);
+	  $("img#button_play").attr("onclick", "play()");
+	  $("img#button_play").attr("src", current_img_new);
 
 	  
 	ytplayer.stopVideo();
@@ -150,6 +150,16 @@ seek_FromRepeatButton(position) {
 	if (ytplayer) {
 		
 //	ytplayer.cueVideoById(id, 0, "medium");
+		
+		  var current_img_src = $("img#button_play").attr("src");
+		  
+		  //REF replace http://stackoverflow.com/questions/2145988/how-do-i-do-string-replace-in-javascript-to-convert-9-61-to-961 answered Jan 27 '10 at 10:19
+		  var current_img_new = 
+			  		current_img_src.replace("player_play.png", "player_pause.png");
+		  
+		  //REF attr http://api.jquery.com/attr/#attr2
+		  $("img#button_play").attr("onclick", "pause()");
+		  $("img#button_play").attr("src", current_img_new);
 		
 		ytplayer.seekTo(position);
 		

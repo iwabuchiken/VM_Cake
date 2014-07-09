@@ -140,7 +140,7 @@ div#ytplayer {
 	
 }
 
-div#controller {
+div#controller, div#video_title {
 	
 	float:	right;
 /*	align:	right;*/	

@@ -1,12 +1,3 @@
-<h1>Title: <?php echo $this->Html->link($video['Video']['title'],
-										$url = $video['Video']['url']
-										 
-									); ?>
-									
-	 / (position = <?php echo count($positions) ?>)
-</h1>
-
-
 <?php //echo $this->element('videos/video_view_controller'); ?>
 
 <br>
@@ -31,18 +22,27 @@
 
 <div>
 
-	<div id="controller">
 	
+	<div id="controller">
+		Title: <?php echo $this->Html->link($video['Video']['title'],
+												$url = $video['Video']['url']
+												 
+											); ?>
+											
+			 / (position = <?php echo count($positions) ?>)
+	
+		<br>
+		<br>
 		<?php echo $this->element('videos/video_view_controller'); ?>
 		
 	</div>
-
+	
 	<div>
 		
 		<?php echo $this->element('videos/view/view_table_poslist')?>
 		
 	</div>
-
+	
   <div id="ytplayer">
 <!--   <div id="ytapiplayer"> -->
     You need Flash player 8+ and JavaScript enabled to view this video.
@@ -58,6 +58,29 @@
   
 
 <br>
+<div>
+		<?php echo $this->Html->link(
+							'Delete Video',
+							array(
+									'controller' => 'videos', 
+									'action' => 'delete', 
+									$video['Video']['id']
+							),
+							array(
+									// 							'style'	=> 'color: blue'
+		 							'class'		=> 'link_alert'
+							),
+								
+							//REF http://stackoverflow.com/questions/22519966/cakephp-delete-confirmation answered Mar 19 at 23:18
+							__("Delete? => %s", $video['Video']['title'])
+			
+			);
+		
+		?>
+
+
+</div>
+
 <div id="xml">
 	<?php
 	
