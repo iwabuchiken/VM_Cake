@@ -233,40 +233,42 @@ class VideosController extends AppController {
 		******************************/
 		$res = $this->save_Position($result, $video_id);
 		
-		if ($res == true) {
+		$this->sort_PosList();
 		
-// 			$result = "Saved: ".$result;
-// 			$arr = array ('saved'=> true,'point'=> $result, 'video_id' => $video_id);
-			$arr = "<tr>"
-					."<td>".Utils::conv_Float_to_TimeLabel($result)."</td>"
-					."<td></td>"
-					;
+// 		if ($res == true) {
+		
+// // 			$result = "Saved: ".$result;
+// // 			$arr = array ('saved'=> true,'point'=> $result, 'video_id' => $video_id);
+// 			$arr = "<tr>"
+// 					."<td>".Utils::conv_Float_to_TimeLabel($result)."</td>"
+// 					."<td></td>"
+// 					;
 			
-		} else {
+// 		} else {
 		
-// 			$result = "Not saved: ".$result;
-// 			$arr = array ('saved'=> false,'point'=> $result, 'video_id' => $video_id);
-			$arr = "Can't save position";
+// // 			$result = "Not saved: ".$result;
+// // 			$arr = array ('saved'=> false,'point'=> $result, 'video_id' => $video_id);
+// 			$arr = "Can't save position";
 		
-		}
+// 		}
 
-		/******************************
+// 		/******************************
 		
-			report
+// 			report
 		
-		******************************/
-		$result = $result."/".$video_id;
+// 		******************************/
+// 		$result = $result."/".$video_id;
 		
-// 		debug($result);
+// // 		debug($result);
 		
-		// set to return response=error
-// 		$arr = array ('response'=>'error','comment'=>'test comment here');
+// 		// set to return response=error
+// // 		$arr = array ('response'=>'error','comment'=>'test comment here');
 		
-		$this->set('arr', $arr);
-// 		$this->set('result', $result);
+// 		$this->set('arr', $arr);
+// // 		$this->set('result', $result);
 		
-		$this->render('/Elements/videos/js/return_SingleEntry');
-// 		$this->render('/Elements/videos/js/retrieve_CurrentTime');
+// 		$this->render('/Elements/videos/js/return_SingleEntry');
+// // 		$this->render('/Elements/videos/js/retrieve_CurrentTime');
 		
 		
 	}//save_CurrentTime()
