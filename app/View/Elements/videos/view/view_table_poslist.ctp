@@ -34,6 +34,26 @@
 		
 				echo $tag_Memo;
 				
+				/******************************
+				
+					delete
+				
+				******************************/
+				echo "<td class='delete_position'>";
+				
+				//REF http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html
+				echo $this->Html->image("/img/delete_position.png", 
+							array(
+								"alt"		=> "Brownies",
+								"onclick"	=> 
+										"delete_position(".$position['Position']['point']
+										.", "
+										.$position['Position']['id']
+										.")",
+								"class"		=> "delete_position"
+							)
+				);
+				echo "</td>";
 				
 				echo "</tr>";
 			

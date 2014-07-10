@@ -52,16 +52,6 @@ a.button_controller {
     cursor:pointer;
 }
 
-img.button_controller {
-    
-    cursor:pointer;
-    
-    width:	42px;
-    
-    margin-right: 15px;
-    
-}
-
 a#button_play {
 	
     color: blue;
@@ -91,10 +81,16 @@ td {
 	
 }
 
+td.delete_position {
+	
+	border: 1px solid blue;
+	
+}
+
 td.td_controller {
 	
 	border: 1px solid #FFFFFF;
-	
+}	
 }
 
 th {
@@ -192,3 +188,24 @@ table#table_poslist tr td.pos_chosen {
 	background-color:	yellow;
 	
 }
+
+img.delete_position {
+	
+/*	border: 1px solid blue;*/
+/*	align:	center;*/
+	text-align:	center;
+	background-color:	#D17C7C;
+	width:		20%;
+	
+}
+
+img.button_controller {
+    
+    cursor:pointer;
+    
+    width:	42px;
+    
+    margin-right: 15px;
+    
+}
+

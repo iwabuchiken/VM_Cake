@@ -564,3 +564,76 @@ function scroll_tobottom() {
 	objDiv.scrollTop = objDiv.scrollHeight;
 }
 
+function 
+delete_position(position, id) {
+
+//	alert("Delete?");
+	
+	//REF http://stackoverflow.com/questions/10310004/jquery-delete-confirmation-box answered Apr 25 '12 at 5:51
+	if (confirm("Delete? => " + position)) {
+        // your deletion code
+//		alert("Delete=> " + id);
+		_delete_position_Ajax(id);
+		
+    }
+	
+    return false;
+	
+}
+
+function
+_delete_position_Ajax(id) {
+	
+//	alert("Start Ajax");
+	var hostname = window.location.hostname;
+	
+	var url;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		url = "/cake_apps/VM_Cake/videos/delete_Ajax";
+		
+	} else {
+
+		url = "/VM_Cake/videos/delete_Ajax";
+
+	}
+	
+//	alert(hostname);
+	
+//	var video_id = $("#video_id_hidden").text();
+	
+	//REF http://stackoverflow.com/questions/4582423/get-value-of-input-tag-using-jquery answered Jan 3 '11 at 6:14
+//	var video_id = $("#video_id_hidden").val();
+	
+	
+	
+	$.ajax({
+		
+	    url: url,
+	    type: "GET",
+	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	    data: {id: id},
+//	    data: {video_id: video_id},
+	    
+	    //REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
+//	    dataType: "json",
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+//		alert(conv_Float_to_TimeLabel(data.point));
+//		addPosition_ToList(data.point);
+		
+		sort__Done(data, status, xhr);
+		
+//		seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // 例: 404
+		alert(xhr.status);
+	    
+	});
+	
+}
