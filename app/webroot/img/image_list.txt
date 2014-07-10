@@ -2,4 +2,3 @@
 2	player_stop.png	1404800854_player_stop.png	https://www.iconfinder.com/icons/48794/player_stop_icon#size=48
 3	player_pause.png	1404801021_player_pause.png	https://www.iconfinder.com/icons/48790/pause_player_icon#size=48
 4	player_repeat.png	1404875602_Play1Hot.png	https://www.iconfinder.com/icons/22930/play_player_right_start_icon#size=48
-5	delete_position.png	1405002857_editor_trash_delete_recycle_bin.png	https://www.iconfinder.com/icons/284072/bin_delete_editor_recycle_trash_icon#size=32

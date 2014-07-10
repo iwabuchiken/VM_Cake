@@ -33,7 +33,7 @@ function show_category_list() {
 	    
 	}).fail(function(xhr, status, error) {
 		
-	    $("#genre_list").append("xhr.status = " + xhr.status + "<br>");          // ä¾‹: 404
+	    $("#genre_list").append("xhr.status = " + xhr.status + "<br>");          // —á: 404
 	    
 	});
 	
@@ -61,7 +61,7 @@ function show_Message() {
 		
 	}).fail(function(xhr, status, error) {
 		
-	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ä¾‹: 404
+	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // —á: 404
 	    
 	});
 	
@@ -363,7 +363,7 @@ function sort() {
 		
 	}).fail(function(xhr, status, error) {
 		
-//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ä¾‹: 404
+//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // —á: 404
 		alert(xhr.status);
 	    
 	});
@@ -429,7 +429,7 @@ function saveCurrentTime_js() {
 		
 	}).fail(function(xhr, status, error) {
 		
-		$("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ä¾‹: 404
+		$("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // —á: 404
 		
 	});
 	
@@ -631,7 +631,7 @@ _delete_position_Ajax(id) {
 		
 	}).fail(function(xhr, status, error) {
 		
-//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ä¾‹: 404
+//	    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // —á: 404
 		alert(xhr.status);
 	    
 	});
