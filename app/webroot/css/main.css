@@ -84,7 +84,7 @@ td {
 td.delete_position {
 	
 	border: 1px solid blue;
-	
+	width:	60px;
 }
 
 td.td_controller {
@@ -195,7 +195,8 @@ img.delete_position {
 /*	align:	center;*/
 	text-align:	center;
 	background-color:	#D17C7C;
-	width:		20%;
+	width:		100%;
+	height:		60%;
 	
 }
 

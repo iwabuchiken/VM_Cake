@@ -40,9 +40,10 @@
 				
 				******************************/
 				echo "<td class='delete_position'>";
+// 				echo "<td class='delete_position' style='width: 20px;'>";
 				
 				//REF http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html
-				echo $this->Html->image("/img/delete_position.png", 
+				echo $this->Html->image("/img/delete_position_v2.png", 
 							array(
 								"alt"		=> "Brownies",
 								"onclick"	=> 

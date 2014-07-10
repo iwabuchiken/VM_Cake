@@ -272,6 +272,37 @@ class VideosController extends AppController {
 		
 		
 	}//save_CurrentTime()
+	
+	public function 
+	delete_Ajax() {
+		
+		$this->layout = 'plain';
+		
+		$position_id = $this->request->query['id'];
+		
+		/******************************
+		
+			delete position
+		
+		******************************/
+// 		$res = true;
+		
+		$res = $this->_delete_Position($position_id);
+		
+		if ($res == true) {
+		
+			$this->sort_PosList();
+// 			$this->render('/Elements/videos/js/delete_position_failed');
+			
+		} else {
+		
+// 			delete_position_failed.ctp
+			$this->render('/Elements/videos/js/delete_position_failed');
+		
+		}
+		;
+		
+	}//save_CurrentTime()
 
 	public function 
 	save_Position($result, $video_id) {
@@ -287,6 +318,32 @@ class VideosController extends AppController {
 		$this->Position->set('updated_at', Utils::get_CurrentTime());
 		
 		if ($this->Position->save()) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+	}
+	
+	public function 
+	_delete_Position($position_id) {
+		
+		$this->loadModel('Position');
+
+// 		$position = $this->Position->find('all',
+// 						//REF conditions http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#find
+// 						array(
+// 								'conditions' => array(
+// 										'Position.id' => $position_id
+											
+// 								)
+// 						)
+// 					);
+		
+		if ($this->Position->delete($position_id)) {
 			
 			return true;
 			

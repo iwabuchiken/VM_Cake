@@ -183,6 +183,7 @@ seek_v2(position, id) {
 		$("img#button_play").attr("src", current_img_new);
 		
 		$("td#" + id).attr("class", "pos_chosen");
+//		$("a#button_save_current_time").css("color", "grey");
 
 		/***********************
 			background
@@ -194,7 +195,8 @@ seek_v2(position, id) {
 				
 				var chosen = $(this).attr("class", "pos_chosen");
 				
-				if(chosen != null) {
+				if(chosen != null && chosen != "delete_position") {
+//					if(chosen != null) {
 					
 					//REF http://api.jquery.com/removeattr/
 					$(this).removeAttr("class");
@@ -381,6 +383,14 @@ function sort__Done(data, status, xhr) {
 
 function saveCurrentTime_js() {
 	
+	/***********************
+		UIs
+	 ***********************/
+	$("a#button_save_current_time").css("color", "grey");
+	
+	/***********************
+		data
+	 ***********************/
 	var curTime = ytplayer.getCurrentTime();
 //	var curTime = getCurrentTime();
 	
@@ -439,6 +449,15 @@ function saveCurrentTime_js() {
 function 
 saveCurrentTime_js__Done(data, status, xhr, curTime) {
 	
+	/***********************
+		UIs
+	 ***********************/
+	//REF css http://stackoverflow.com/questions/2001366/jquery-change-text-color-is-there-a-code-for-this answered Jan 4 '10 at 18:52
+	$("a#button_save_current_time").css("color", "#088A08");
+	
+	/***********************
+		html
+	 ***********************/
 	$("#table_poslist").html(data);
 //	$("#table_poslist").append(data);
 	
@@ -571,7 +590,8 @@ delete_position(position, id) {
 //	alert("Delete?");
 	
 	//REF http://stackoverflow.com/questions/10310004/jquery-delete-confirmation-box answered Apr 25 '12 at 5:51
-	if (confirm("Delete? => " + position)) {
+	if (confirm("Delete? => " + conv_Float_to_TimeLabel(position))) {
+//		if (confirm("Delete? => " + position)) {
         // your deletion code
 //		alert("Delete=> " + id);
 		_delete_position_Ajax(id);
@@ -605,7 +625,7 @@ _delete_position_Ajax(id) {
 //	var video_id = $("#video_id_hidden").text();
 	
 	//REF http://stackoverflow.com/questions/4582423/get-value-of-input-tag-using-jquery answered Jan 3 '11 at 6:14
-//	var video_id = $("#video_id_hidden").val();
+	var video_id = $("#video_id_hidden").val();
 	
 	
 	
@@ -614,7 +634,8 @@ _delete_position_Ajax(id) {
 	    url: url,
 	    type: "GET",
 	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
-	    data: {id: id},
+//	    data: {id: id},
+	    data: {id: id, video_id: video_id},
 //	    data: {video_id: video_id},
 	    
 	    //REF json http://stackoverflow.com/questions/1261747/how-to-get-json-response-into-variable-from-a-jquery-script answered Aug 11 '09 at 17:24
@@ -626,7 +647,7 @@ _delete_position_Ajax(id) {
 //		alert(conv_Float_to_TimeLabel(data.point));
 //		addPosition_ToList(data.point);
 		
-		sort__Done(data, status, xhr);
+		_delete_position_Ajax__Done(data, status, xhr);
 		
 //		seek(data);
 		
@@ -636,5 +657,62 @@ _delete_position_Ajax(id) {
 		alert(xhr.status);
 	    
 	});
+	
+}
+
+function
+_delete_position_Ajax__Done(data, status, xhr) {
+	
+	//REF substring http://www.w3schools.com/jsref/jsref_substring.asp
+	//REF length http://www.w3schools.com/jsref/jsref_length_string.asp
+	var data_substr = data.substring(3, data.length);
+	
+	var str = "abc";
+	
+	//REF http://stackoverflow.com/questions/10154898/string-comparison-returns-false-strange-javascript-behaviour-with-jquery-mobile answered Apr 14 '12 at 15:54
+//	var index;
+//	var msg = "";
+//	for (index = 0; index < data.length; ++index) {
+//	    msg += data.charCodeAt(index) + ", ";
+//	}
+//	
+//	alert("data => " + msg);
+//	
+//	msg = "";
+//	
+//	for (index = 0; index < str.length; ++index) {
+//		msg += str.charCodeAt(index) + ", ";
+//	}
+//	
+//	alert("str => " + msg);
+//	
+//	msg = "";
+//	
+//	for (index = 0; index < data_substr.length; ++index) {
+//		msg += data_substr.charCodeAt(index) + ", ";
+//	}
+//	
+//	alert("data_substr => " + msg);
+	
+//	alert(str + "(str) => " + str.constructor.name);
+//	
+//	alert("data == \"failed\" => " + (data == "failed"));
+	if (data_substr === str) {
+//		if (data === "failed") {
+//		if (data == "failed") {
+		
+		alert("Delete position => failed");
+		
+	} else {
+
+		//REF http://stackoverflow.com/questions/10314338/get-name-of-object-or-class-in-javascript answered Apr 25 '12 at 11:15
+//		alert("class => " + data.constructor.name);		// String
+//		alert("data => " + data);
+		
+		alert("position => deleted");
+		
+		$("#table_poslist").html(data);
+		
+	}
 	
 }
