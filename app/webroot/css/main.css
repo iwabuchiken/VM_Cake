@@ -179,5 +179,16 @@ table#table_poslist tr td {
 /*	align:	right; */
 	border: 1px solid black;
 /*	width:	30%;*/
+
+}
+
+table#table_poslist tr td.pos_chosen {
+
+/*	float:	right;*/
+/*	align:	right; */
+	border: 1px solid blue;
+/*	width:	30%;*/
+/*	bgcolor:	yellow;*/
+	background-color:	yellow;
 	
 }
