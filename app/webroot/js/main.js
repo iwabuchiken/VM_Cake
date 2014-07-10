@@ -1,3 +1,6 @@
+
+var previous_position;
+
 function show_category_list() {
 	
 	var select_genre = $("#keyword_genre_id");
@@ -128,6 +131,10 @@ seek(position) {
 
   if (ytplayer) {
 
+	  alert("previous position => " + conv_Float_to_TimeLabel(previous_position))
+	  
+	  previous_position = position;
+	  
 //	ytplayer.cueVideoById(id, 0, "medium");
 	  
 	ytplayer.seekTo(position);
@@ -153,6 +160,131 @@ seek(position) {
   }
 
 }//seek(position, fromRepeatButton)
+
+function 
+seek_v2(position, id) {
+//	function seek($position) {
+	
+	if (ytplayer) {
+
+//		_test_seek_v2();
+
+		/*****************
+			UIs
+		 ******************/
+		$("img#button_repeat").attr("onclick", "repeat(" + position + ")");
+		
+		var current_img_src = $("img#button_play").attr("src");
+		
+		var current_img_new = 
+			current_img_src.replace("player_play.png", "player_pause.png");
+		
+		$("img#button_play").attr("onclick", "pause()");
+		$("img#button_play").attr("src", current_img_new);
+		
+		$("td#" + id).attr("class", "pos_chosen");
+
+		/***********************
+			background
+		 ***********************/
+		//REF http://stackoverflow.com/questions/5193973/loop-through-all-td-elements-in-a-table answered Mar 4 '11 at 12:56
+		$("table#table_poslist tr td").each(
+				
+			function() {
+				
+				var chosen = $(this).attr("class", "pos_chosen");
+				
+				if(chosen != null) {
+					
+					//REF http://api.jquery.com/removeattr/
+					$(this).removeAttr("class");
+					
+				}
+				
+			}
+				
+//					$(this).attr("class", "pos_chosen");
+			);
+
+		// add class value
+		$("td#" + id).attr("class", "pos_chosen");
+		
+		
+		/*****************
+			player
+		 ******************/
+		ytplayer.seekTo(position);
+		
+		ytplayer.playVideo();
+		
+		
+//	ytplayer.seekTo($position);
+//		ytplayer.seekTo(<?php //echo $position;?>);
+//		ytplayer.seekTo(<?php //echo 20;?>);
+//		ytplayer.seekTo(10);
+		
+	}
+	
+}//seek(position, fromRepeatButton)
+
+function
+_test_seek_v2() {
+	
+//	alert("previous position => " + conv_Float_to_TimeLabel(previous_position))
+	
+//	alert("attr(\"class\") => " + $("td#" + id).attr("class"));
+//	var message;
+//	
+//	if($("td#" + id).attr("class") == "undefined") {
+//		
+//		message = "Not yet defined";
+//		
+//	} else if($("td#" + id).attr("class") == null) {
+//		
+//		message = "null";
+//		
+//	} else {
+//		
+//		message = "attr(\"class\") => " + $("td#" + id).attr("class");
+//		
+//	}
+//	
+//	alert(message);
+//	
+//	previous_position = position;
+	
+//ytplayer.cueVideoById(id, 0, "medium");
+	
+	var table = $("#table_poslist");
+
+	//REF http://stackoverflow.com/questions/5347357/jquery-get-selected-element-tag-name answered Mar 18 '11 at 2:22
+//	alert("tagName => " + table.prop("tagName"))
+	
+//	$("table tr td").each(
+	$("table#table_poslist tr td").each(
+//		$("table#table_poslist tr td").each(
+		
+		function() {
+			
+			$(this).attr("class", "pos_chosen");
+			
+		}
+		
+//			$(this).attr("class", "pos_chosen");
+	);
+	
+//	var trs = $("table#table_poslist tr");
+////	var trs = $("table#table_poslist tr").get(0);	// N/W
+//	
+//	alert("tagName => " + trs.prop("tagName"));
+//	alert("id => " + trs.attr("id"));
+//	
+//	var trs = $("#table_poslist").children();
+////	var trs = $("table#table_poslist").children();
+//	
+//	alert("trs.length => " + trs.length);
+	
+}
 
 function 
 seek_FromRepeatButton(position) {

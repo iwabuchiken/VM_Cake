@@ -13,13 +13,17 @@
 				
 				parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
 				
-				$tag_Point = "<td onclick=\"seek("
+// 				$tag_Point = "<td onclick=\"seek("
+				$tag_Point = "<td onclick=\"seek_v2("
 						.$position['Position']['point']
+						.", "
+						."'position_$count'"
 						.")"."\""
 						." id=\"position_$count\""
 						.">"
 						.$this->Mytest->testFunction($position['Position']['point'])
 						."</td>";
+// 						." class=\"pos_chosen\""
 		
 				echo $tag_Point;
 				

@@ -83,6 +83,16 @@
 
 </div>
 
+<div>
+<audio controls="controls">
+  Your browser does not support the <code>audio</code> element.
+  <source src="/audio/Come on and Stomp, Stomp, Stomp - Johnny Dodds.mp3" type="audio/wav">
+<!--   <source src="foo.wav" type="audio/wav"> -->
+</audio>
+
+</div>
+
+
 <div id="xml">
 	<?php
 	
