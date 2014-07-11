@@ -92,6 +92,9 @@
 
 </div>
 
+<div id="div_message">
+</div>
+
 
 <div id="xml">
 	<?php

@@ -1,3 +1,6 @@
+//$(function() {
+//    $( "#dialog" ).dialog();
+//});
 
 var previous_position;
 
@@ -193,9 +196,13 @@ seek_v2(position, id) {
 				
 			function() {
 				
-				var chosen = $(this).attr("class", "pos_chosen");
+//				alert($(this).attr("class"));
 				
-				if(chosen != null && chosen != "delete_position") {
+//				var chosen = $(this).attr("class", "pos_chosen");
+				var chosen = $(this).attr("class");
+				
+//				if(chosen != null && chosen != "delete_position") {
+				if(chosen == "pos_chosen") {
 //					if(chosen != null) {
 					
 					//REF http://api.jquery.com/removeattr/
@@ -586,17 +593,58 @@ function scroll_tobottom() {
 
 function 
 delete_position(position, id) {
-
+//	delete_position_grey
+//	$(this).attr("class", "delete_position_grey");
+	
+//	var children = this.children();
+//	
+//	var msg = children.constructor.name;
+//	
+//	alert("msg => " + msg);
+//	alert("name => " + this.constructor.name);
+//	alert(this);
+	
+//	$(this).css("bgcolor", "grey");
+//	$(this).css("background", "grey");
+//	$(this).css("background-color", "grey");
+	
 //	alert("Delete?");
+	
+//	alert("children => " + $(this).children().constructor.name);
+	
+//	$(this).children().attr("class", "delete_position_grey");
+//	$(this).attr("class", "delete_position_grey");
+	
+//	alert($("div#div_message").text());
+	
+//	$("div#div_message").text("deleted");
+//	$("div#div_message").dialog(
+//			{
+//				draggable:	true,
+//				width:		100,
+//				height:		100,
+//				title:		"Message",
+////				modal: true,
+////				position: ['center'],
+////				dialogClass: 'ui-dialog-osx'
+//				dialogClass:	'ui-dialog-style-1'
+////				buttons: {
+////			        "close": function() {
+////			            $(this).dialog("close");
+////			        }
+////			    }
+//			}
+//		);
+
 	
 	//REF http://stackoverflow.com/questions/10310004/jquery-delete-confirmation-box answered Apr 25 '12 at 5:51
 	if (confirm("Delete? => " + conv_Float_to_TimeLabel(position))) {
-//		if (confirm("Delete? => " + position)) {
-        // your deletion code
-//		alert("Delete=> " + id);
+		
 		_delete_position_Ajax(id);
 		
     }
+
+	
 	
     return false;
 	
@@ -605,6 +653,14 @@ delete_position(position, id) {
 function
 _delete_position_Ajax(id) {
 	
+	/***********************
+		UIs
+	 ***********************/
+//	$(this).css("background-color", "grey");
+	
+	/***********************
+		Prep: ajax
+	 ***********************/
 //	alert("Start Ajax");
 	var hostname = window.location.hostname;
 	
@@ -709,10 +765,60 @@ _delete_position_Ajax__Done(data, status, xhr) {
 //		alert("class => " + data.constructor.name);		// String
 //		alert("data => " + data);
 		
-		alert("position => deleted");
+//		alert("position => deleted");
+		
+//		$("div#div_message").append("deleted");
+//		
+//		$("div#div_message").dialog();
+		$("div#div_message").text("deleted");
+		
+//		$("div#div_message").dialog();
+//		$("div#div_message").dialog(
+//			{
+//				draggable: true
+//			}
+//		);
+		
+		$("div#div_message").dialog(
+				{
+					draggable:	true,
+					width:		100,
+					height:		100,
+//					title:		"Message",
+//					modal: true,
+//					position: ['center'],
+//					position: [200, 200],
+//					position: ['center', 200],
+//					dialogClass: 'ui-dialog-osx'
+					//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+					position:	{ my: 'top', at: 'top+20%' },
+//					position:	{ my: 'top', at: 'top+10' },
+					dialogClass:	'ui-dialog-style-1'
+//					buttons: {
+//				        "close": function() {
+//				            $(this).dialog("close");
+//				        }
+//				    }
+				}
+		);
+
+		
+		AutoCloseDialogBox(2000);
+
 		
 		$("#table_poslist").html(data);
 		
 	}
 	
+}
+
+//REF http://dotnetguts.blogspot.jp/2012/02/how-to-open-and-auto-close-jquery-ui.html
+//REF referer http://forums.asp.net/t/1818619.aspx?close+alert+window+automatically+after+5+seconds Jun 27, 2012 06:59 AM
+function
+AutoCloseDialogBox(WaitSeconds) {
+    //Auto Close Dialog Box after few seconds
+    setTimeout(
+        function () {
+            $("div#div_message").dialog("close");
+        }, WaitSeconds);
 }
