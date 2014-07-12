@@ -247,3 +247,23 @@ img.button_controller {
 .ui-dialog-titlebar-close {
   visibility: hidden;
 }
+
+/* REF http://stackoverflow.com/questions/5386478/how-to-change-the-button-size-in-the-jquery-ui-confirmation-dialog answered Mar 22 '11 at 5:34 */
+.ui-button-text {
+/*#dialog .ui-button-text {*/
+    font-size: 25px; /* Or whatever smaller value works for you. */
+    margin-right: 5px;
+}
+
+.ui-dialog-buttonpane {
+	
+	margin-right: 5px;
+	
+}
+
+.ui-dialog-buttonset {
+	
+	margin-right: 10px;
+	margin-left: 10px;
+	
+}

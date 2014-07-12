@@ -74,6 +74,23 @@ function play() {
 	
 	  if (ytplayer) {
 	
+//		  /***********************
+//			sound
+//		 ***********************/
+//		  var aud = $("audio#audio_play")[0];
+////		  Woosh-Mark_DiAngelo-4778593.wav
+//		  aud.src = "/VM_Cake/audio/POOL-Pool_Shot-709343898.mp3";
+//		  aud.play();
+		  
+//		var audio_play = $("audio#audio_play")[0];	// [object HTMLAudioElement]
+//		var audio_play = $("audio#audio_play");	// [object Object]
+//		alert("audio => " + audio_play.constructor.name);
+//		alert("audio => " + audio_play);	// [object Object]
+//		audio_play.play();
+		  
+		  /***********************
+			UIs
+		 ***********************/
 		  var current_img_src = $("img#button_play").attr("src");
 		  
 		  var current_img_new = 
@@ -92,6 +109,25 @@ function pause() {
 	
   if (ytplayer) {
 	  
+	  /***********************
+		sound
+	 ***********************/
+	  sound("Woosh-Mark_DiAngelo-4778593.wav");
+	  
+//	  var aud = $("audio#audio_play")[0];
+////	  Woosh-Mark_DiAngelo-4778593.wav
+//	  aud.src = "/VM_Cake/audio/Woosh-Mark_DiAngelo-4778593.wav";
+//	  $("source#audio_source").src = "/VM_Cake/audio/Woosh-Mark_DiAngelo-4778593.wav";
+//	  $("source#audio_source").src = "/VM_Cake/audio/POOL-Pool_Shot-709343898.mp3";
+
+//	  aud.load();
+//	  aud.play();
+//	  $("audio#audio_play")[0].load();
+//	  $("audio#audio_play")[0].play();
+	  
+	  /***********************
+		player
+	 ***********************/
 	  var current_img_src = $("img#button_play").attr("src");
 	  
 	  var current_img_new = 
@@ -391,6 +427,18 @@ function sort__Done(data, status, xhr) {
 function saveCurrentTime_js() {
 	
 	/***********************
+		sound
+	 ***********************/
+//	Tick-DeepFrozenApps-397275646.wav
+	sound("Tick-DeepFrozenApps-397275646.mp3");
+//	sound("Tick-DeepFrozenApps-397275646.wav");
+//	  var aud = $("audio#audio_play")[0];
+////	  Woosh-Mark_DiAngelo-4778593.wav
+//	  aud.src = "/VM_Cake/audio/POOL-Pool_Shot-709343898.mp3";
+//	  aud.play();
+
+	
+	/***********************
 		UIs
 	 ***********************/
 	$("a#button_save_current_time").css("color", "grey");
@@ -455,6 +503,11 @@ function saveCurrentTime_js() {
 
 function 
 saveCurrentTime_js__Done(data, status, xhr, curTime) {
+	
+	/***********************
+		sound
+	 ***********************/
+	sound("pin_dropping-Brian_Rocca-2084700791.mp3");
 	
 	/***********************
 		UIs
@@ -571,6 +624,11 @@ function conv_Float_to_TimeLabel(float_val) {
 
 function repeat(position) {
 	
+	/***********************
+		sound
+	 ***********************/
+//	sound("pin_dropping-Brian_Rocca-2084700791.mp3");
+	
 	seek_FromRepeatButton(position);
 //	seek_FromRepeatButton(position, true);
 //	seek(position, true);
@@ -636,14 +694,62 @@ delete_position(position, id) {
 //			}
 //		);
 
+	/***********************
+		sound
+	 ***********************/
+//	  var aud = $("audio#audio_play")[0];
+////	  Woosh-Mark_DiAngelo-4778593.wav
+//	  aud.src = "/VM_Cake/audio/Shells_falls-Marcel-829263474.wav";
+//	  aud.play();	
 	
-	//REF http://stackoverflow.com/questions/10310004/jquery-delete-confirmation-box answered Apr 25 '12 at 5:51
-	if (confirm("Delete? => " + conv_Float_to_TimeLabel(position))) {
-		
-		_delete_position_Ajax(id);
-		
-    }
-
+//	  while(!aud.ended) {
+//		  
+//	  }
+	  
+	/***********************
+		process
+	 ***********************/
+//	  if(aud.ended) {
+		  
+	$("div#div_message").text("Delete? => "  + conv_Float_to_TimeLabel(position));
+	
+	$("div#div_message").dialog(
+			{
+				draggable:	true,
+				width:		200,
+				height:		200,
+				title:		"Confirm",
+//				modal: true,
+//				position: ['center'],
+//				position: [200, 200],
+//				position: ['center', 200],
+//				dialogClass: 'ui-dialog-osx'
+				//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+				position:	{ my: 'top', at: 'top+20%' },
+//				position:	{ my: 'top', at: 'top+10' },
+				dialogClass:	'ui-dialog-style-1'
+				,
+					buttons: {
+			        "Cancel": function() {
+			            $(this).dialog("close");
+			        }
+					,
+					"Go": function() {
+						$(this).dialog("close");
+						_delete_position_Ajax(id);
+					}
+			    }
+			}
+	);
+	
+			//REF http://stackoverflow.com/questions/10310004/jquery-delete-confirmation-box answered Apr 25 '12 at 5:51
+//			if (confirm("Delete? => " + conv_Float_to_TimeLabel(position))) {
+//				
+//				_delete_position_Ajax(id);
+//				
+//		    }
+			
+//	  }
 	
 	
     return false;
@@ -719,6 +825,11 @@ _delete_position_Ajax(id) {
 function
 _delete_position_Ajax__Done(data, status, xhr) {
 	
+	/***********************
+		sound
+	 ***********************/
+	sound("Shells_falls-Marcel-829263474.wav");
+	
 	//REF substring http://www.w3schools.com/jsref/jsref_substring.asp
 	//REF length http://www.w3schools.com/jsref/jsref_length_string.asp
 	var data_substr = data.substring(3, data.length);
@@ -784,7 +895,7 @@ _delete_position_Ajax__Done(data, status, xhr) {
 					draggable:	true,
 					width:		100,
 					height:		100,
-//					title:		"Message",
+					title:		"",
 //					modal: true,
 //					position: ['center'],
 //					position: [200, 200],
@@ -794,11 +905,15 @@ _delete_position_Ajax__Done(data, status, xhr) {
 					position:	{ my: 'top', at: 'top+20%' },
 //					position:	{ my: 'top', at: 'top+10' },
 					dialogClass:	'ui-dialog-style-1'
-//					buttons: {
-//				        "close": function() {
-//				            $(this).dialog("close");
+					,
+					buttons: {
+//				        " ": function() {
+////				            $(this).dialog("close");
 //				        }
-//				    }
+//					"close": function() {
+//						$(this).dialog("close");
+//					}
+				    }
 				}
 		);
 
@@ -821,4 +936,32 @@ AutoCloseDialogBox(WaitSeconds) {
         function () {
             $("div#div_message").dialog("close");
         }, WaitSeconds);
+}
+
+function
+sound(file_name) {
+	
+	var hostname = window.location.hostname;
+	
+	var path;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		path = "/cake_apps/VM_Cake/audio";
+		
+	} else {
+		
+		path = "/VM_Cake/audio";
+//		path = "/VM_Cake/videos/save_CurrentTime";
+		
+	}
+
+	
+	  var aud = $("audio#audio_play")[0];
+//	  Woosh-Mark_DiAngelo-4778593.wav
+	  var path;
+	  aud.src = aud.src = path + "/" + file_name;
+//	  aud.src = aud.src = "/VM_Cake/audio/" + file_name;
+	  aud.play();
+	  
 }
