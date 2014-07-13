@@ -965,3 +965,43 @@ sound(file_name) {
 	  aud.play();
 	  
 }
+
+function
+setVolue(volume) {
+	
+//	$("#volume_val").text(volume.toString());
+//	$("#volume_val").text(volume);
+	
+}
+
+$(function() {
+	//REF http://iviewsource.com/codingtutorials/building-a-ui-slider-with-javascript-and-jquery-ui/
+    $( "#div_slider" ).slider({
+    		min: 0, 
+    		max: 100, 
+    		value: 100,
+    		slide: function(event, ui) {
+//    			alert(ui.value / 100);
+//    			setVolume(ui.value / 100);
+//    			setVolume(ui.value);
+//    			$("#volume_val").text(volume.toString());
+    			$("#volume_val").text(ui.value.toString());
+    			
+    			if (ytplayer) {
+    				
+    				ytplayer.setVolume(ui.value);
+    				
+    			}
+    		}//slide: function(event, ui)
+    	}
+    
+    );//$( "#div_slider" ).slider
+    
+//    $( "#div_slider" ).slider('option', 'value', 200);	// No image
+//    $( "#div_slider" ).slider();
+//    $(".ui-slider-range").css("width",300);
+    var range = $( "#div_slider" ).slider( "option", "value" );
+//    var range = $( ".selector" ).slider( "option", "range" );
+//	    alert("range" => range);
+    
+  });
