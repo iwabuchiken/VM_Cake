@@ -649,6 +649,20 @@ function scroll_tobottom() {
 	objDiv.scrollTop = objDiv.scrollHeight;
 }
 
+function scroll_totop() {
+//	function scroll_ToBottom() {
+	
+//	alert("Moving the scroll");
+	
+//	$("img#scroll_ToBottom")
+	var objDiv = document.getElementById("div_poslist");
+//	var objDiv = document.getElementById("scroll_tobottom");
+	
+//	alert(objDiv + "/height = " + objDiv.scrollHeight);
+//	var objDiv = document.getElementById("scroll_ToBottom");
+	objDiv.scrollTop = 0;
+}
+
 function 
 delete_position(position, id) {
 //	delete_position_grey

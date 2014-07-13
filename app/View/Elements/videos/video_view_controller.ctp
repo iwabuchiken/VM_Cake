@@ -53,9 +53,16 @@
 			class="button_controller">
 		||
 		<img 
-			src="<?php echo $url_src; ?>/player_stop.png" 
+			src="<?php echo $url_src; ?>/list_to_bottom.png" 
 			alt="play"
 			onclick="scroll_tobottom();"
+			id="scroll_ToBottom"
+			class="button_controller">
+		
+		<img 
+			src="<?php echo $url_src; ?>/list_to_top.png" 
+			alt="play"
+			onclick="scroll_totop();"
 			id="scroll_ToBottom"
 			class="button_controller">
 		

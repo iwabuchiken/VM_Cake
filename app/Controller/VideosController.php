@@ -4,7 +4,15 @@ class VideosController extends AppController {
 	public $helpers = array('Html', 'Form');
 
 	public function index() {
-		$this->set('videos', $this->Video->find('all'));
+// 		$this->set('videos', $this->Video->find('all'));
+		$this->set('videos', $this->Video->find('all',
+						array(
+							'order' => array(
+									'Video.id' => 'asc')
+						)
+		
+	
+		));
 		
 // 		debug(Utils::get_dPath_Log());
 		
@@ -213,6 +221,46 @@ class VideosController extends AppController {
 // 		return $this->redirect(array('action' => 'index'));
 		
 	}
+
+	public function edit($id = null) {
+		if (!$id) {
+			throw new NotFoundException(__('Invalid text'));
+		}
+	
+		/****************************************
+			* Video
+		****************************************/
+		$video = $this->Video->findById($id);
+		if (!$video) {
+			throw new NotFoundException(__('Invalid video'));
+		}
+	
+		if (count($this->params->data) != 0) {
+				
+			$this->Video->id = $id;
+				
+			$this->params->data['Video']['updated_at'] =
+						Utils::get_CurrentTime2(CONS::$timeLabelTypes["rails"]);
+				
+			if ($this->Video->save($this->request->data)) {
+	
+				$this->Session->setFlash(__('Your video has been updated.'));
+				return $this->redirect(
+						array(
+								'action' => 'view',
+								$id));
+	
+			}//if ($this->Text->save($this->request->data))
+				
+			$this->Session->setFlash(__('Unable to update your video.'));
+				
+		}
+	
+		if (!$this->request->data) {
+			$this->request->data = $video;;
+		}
+	
+	}//public function edit($id = null)
 	
 	public function 
 	save_CurrentTime() {
