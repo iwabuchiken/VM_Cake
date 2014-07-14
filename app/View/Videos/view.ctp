@@ -50,28 +50,54 @@
 
 <br>
 
-<div>
-		<?php echo $this->Html->link(
-							'Delete Video',
-							array(
-									'controller' => 'videos', 
-									'action' => 'delete', 
-									$video['Video']['id']
-							),
-							array(
-									// 							'style'	=> 'color: blue'
-		 							'class'		=> 'link_alert'
-							),
-								
-							//REF http://stackoverflow.com/questions/22519966/cakephp-delete-confirmation answered Mar 19 at 23:18
-							__("Delete? => %s", $video['Video']['title'])
+<table class="table_no_line">
+  <tr>
+    <td>
+	    <?php echo $this->Html->link(
+						'Edit Video',
+						array(
+								'controller' => 'videos', 
+								'action' => 'edit', 
+								$video['Video']['id']
+						)
+				
+				);
+		
+		?>
+    </td>
+    <td rowspan="2" id="td_video_memo">
+    	<?php 
+    	
+    		echo $video['Video']['memo'];
+    		
+    	?>
+    
+    </td>
+  </tr>
+  <tr>
+    <td>
+    	<?php echo $this->Html->link(
+					'Delete Video',
+					array(
+							'controller' => 'videos', 
+							'action' => 'delete', 
+							$video['Video']['id']
+					),
+					array(
+							// 							'style'	=> 'color: blue'
+ 							'class'		=> 'link_alert'
+					),
+						
+					//REF http://stackoverflow.com/questions/22519966/cakephp-delete-confirmation answered Mar 19 at 23:18
+					__("Delete? => %s", $video['Video']['title'])
 			
 			);
 		
 		?>
-
-
-</div>
+    
+        </td>
+  </tr>
+</table>
 
 <script type="text/javascript">
 // 	$("#div_slider").slider();

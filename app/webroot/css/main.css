@@ -94,6 +94,21 @@ td.td_controller {
 }	
 }
 
+td#td_video_memo {
+	
+	border: 1px solid blue;
+	background: #81BEF7;
+	
+}
+
+table.table_no_line tr td#td_video_memo {
+	
+	border: 1px solid blue;
+	background: #DEE44B;
+	width: 50%;
+	
+}
+
 th {
 	
 	border: 1px solid blue;
@@ -121,6 +136,12 @@ table.table_show tr td.td_value_mideum {
 table.table_show tr td {
 	
 	border: 1px solid black;
+	
+}
+
+table.table_no_line tr td {
+	
+	border: 1px solid white;
 	
 }
 
