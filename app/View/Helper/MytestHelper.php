@@ -13,4 +13,26 @@ class MytestHelper extends AppHelper{
 		
 // 		return ".$arg1.";
 	}
+	
+	public function 
+	build_Path_ContAction($cont, $action) {
+		
+		return array('controller' => $cont, 
+				    	'action' => $action);
+		
+	}
+	
+	public function 
+	build_Path_ContActionParam($cont, $action, $param) {
+		
+		$arry = array();
+		
+		$arry['controller'] = $cont;
+		$arry['action'] = $action;
+		$arry['?'] = $param;
+		
+		return $arry;
+		
+	}
+	
 }

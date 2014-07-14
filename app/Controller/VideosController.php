@@ -1,15 +1,43 @@
 <?php
 
 class VideosController extends AppController {
-	public $helpers = array('Html', 'Form');
+	public $helpers = array('Html', 'Form', 'Mytest');
+// 	public $helpers = array('Html', 'Form');
 
 	public function index() {
 // 		$this->set('videos', $this->Video->find('all'));
-		$this->set('videos', $this->Video->find('all',
-						array(
+	
+// 		debug(count($this->request->query));
+// 		debug($this->request->query);
+// 		debug($this->request->query['sort']);
+// 		debug(@$this->request->query['order'] ? "yes" : "no");
+		
+		if (@$this->request->query['sort']) {
+// 		if (@$this->request->query['order']) {
+		
+			$sort = $this->request->query['sort'];
+			
+// 			debug("yes");
+			$option = array(
 							'order' => array(
-									'Video.id' => 'asc')
-						)
+									"Video.$sort" => 'asc')
+			);
+			
+		} else {
+		
+			$option = array(
+					'order' => array(
+							"Video.id" => 'asc')
+			);
+		
+		}
+		
+		$this->set('videos', $this->Video->find('all',
+						$option
+// 						array(
+// 							'order' => array(
+// 									'Video.id' => 'asc')
+// 						)
 		
 	
 		));
@@ -126,10 +154,20 @@ class VideosController extends AppController {
 
 	public function add() {
 		if ($this->request->is('post')) {
+			
 			$this->Video->create();
+			
+			$this->request->data['Video']['created_at'] =
+						Utils::get_CurrentTime2(CONS::$timeLabelTypes["rails"]);
+			
+			$this->request->data['Video']['updated_at'] =
+						Utils::get_CurrentTime2(CONS::$timeLabelTypes["rails"]);
+			
 			if ($this->Video->save($this->request->data)) {
+				
 				$this->Session->setFlash(__('Your video has been saved.'));
 				return $this->redirect(array('action' => 'index'));
+				
 			}
 			$this->Session->setFlash(__('Unable to add your video.'));
 		} else {
