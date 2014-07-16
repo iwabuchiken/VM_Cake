@@ -5,11 +5,11 @@
 
 <table>
 
-	<?php echo $this->element('videos/index/index_t_headers')?>
+	<?php echo $this->element('positions/index/index_t_headers')?>
 
 		<!-- Here is where we loop through our $positions array, printing out post info -->
 
-	<?php echo $this->element('videos/index/index_t_entries')?>
+	<?php echo $this->element('positions/index/index_t_entries')?>
 	
 </table>
 

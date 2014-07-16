@@ -1,8 +1,14 @@
-<div id="div_poslist">
-	<table id="table_poslist">
-	  	
-	  	<?php 
-	  	
+<?php
+	// Simpler way of making sure all no-cache headers get sent
+	// and understood by all browsers, including IE.
+	session_cache_limiter('nocache');
+	header('Expires: ' . gmdate('r', 0));
+	
+	header('Content-type: text/html');
+?>
+
+<?php 
+  	
 	  		$count = 0;
 	  	
 			foreach ($positions as $position):
@@ -28,21 +34,7 @@
 				echo $tag_Point;
 				
 				
-// 				$tag_Memo = "<td>"
-				$tag_Memo = "<td onclick='edit_memo("
-						."\""
-						.$position['Position']['id']
-						."\""
-						.", "
-						."\""
-						.$position['Position']['point']
-						."\""
-						.", "
-						."\""
-						.$position['Position']['memo']
-						."\""
-						.")'"
-						.">"
+				$tag_Memo = "<td>"
 						.$position['Position']['memo']
 						."</td>";
 		
@@ -54,7 +46,6 @@
 				
 				******************************/
 				echo "<td class='delete_position'>";
-// 				echo "<td class='delete_position' style='width: 20px;'>";
 				
 				//REF http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html
 				echo $this->Html->image("/img/delete_position_v2.png", 
@@ -75,29 +66,5 @@
 				$count ++;
 				
 	  		endforeach;
-	  	
-	  	?>
-	  		
-	  	</table>
-	  	
-</div>
-
-<div>
-<?php 	$hostname = Utils::get_HostName();
-	
-// 	echo $hostname;
-	
-	if ($hostname == "localhost") {
-	
-		$url_src = "/VM_Cake/img";
-		
-	} else {
-	
-		$url_src = "/cake_apps/VM_Cake/img";
-	
-	}
-	;
-?>
-	
-
-</div>
+  	
+  	?>

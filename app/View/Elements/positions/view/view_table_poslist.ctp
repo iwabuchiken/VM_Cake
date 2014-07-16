@@ -28,21 +28,7 @@
 				echo $tag_Point;
 				
 				
-// 				$tag_Memo = "<td>"
-				$tag_Memo = "<td onclick='edit_memo("
-						."\""
-						.$position['Position']['id']
-						."\""
-						.", "
-						."\""
-						.$position['Position']['point']
-						."\""
-						.", "
-						."\""
-						.$position['Position']['memo']
-						."\""
-						.")'"
-						.">"
+				$tag_Memo = "<td>"
 						.$position['Position']['memo']
 						."</td>";
 		

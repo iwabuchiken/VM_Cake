@@ -665,61 +665,6 @@ function scroll_totop() {
 
 function 
 delete_position(position, id) {
-//	delete_position_grey
-//	$(this).attr("class", "delete_position_grey");
-	
-//	var children = this.children();
-//	
-//	var msg = children.constructor.name;
-//	
-//	alert("msg => " + msg);
-//	alert("name => " + this.constructor.name);
-//	alert(this);
-	
-//	$(this).css("bgcolor", "grey");
-//	$(this).css("background", "grey");
-//	$(this).css("background-color", "grey");
-	
-//	alert("Delete?");
-	
-//	alert("children => " + $(this).children().constructor.name);
-	
-//	$(this).children().attr("class", "delete_position_grey");
-//	$(this).attr("class", "delete_position_grey");
-	
-//	alert($("div#div_message").text());
-	
-//	$("div#div_message").text("deleted");
-//	$("div#div_message").dialog(
-//			{
-//				draggable:	true,
-//				width:		100,
-//				height:		100,
-//				title:		"Message",
-////				modal: true,
-////				position: ['center'],
-////				dialogClass: 'ui-dialog-osx'
-//				dialogClass:	'ui-dialog-style-1'
-////				buttons: {
-////			        "close": function() {
-////			            $(this).dialog("close");
-////			        }
-////			    }
-//			}
-//		);
-
-	/***********************
-		sound
-	 ***********************/
-//	  var aud = $("audio#audio_play")[0];
-////	  Woosh-Mark_DiAngelo-4778593.wav
-//	  aud.src = "/VM_Cake/audio/Shells_falls-Marcel-829263474.wav";
-//	  aud.play();	
-	
-//	  while(!aud.ended) {
-//		  
-//	  }
-	  
 	/***********************
 		process
 	 ***********************/
@@ -941,6 +886,58 @@ _delete_position_Ajax__Done(data, status, xhr) {
 	
 }
 
+function
+_edit_memo_execute_Done(data, status, xhr) {
+	
+	/***********************
+		sound
+	 ***********************/
+	sound("Shells_falls-Marcel-829263474.wav");
+	
+	//REF substring http://www.w3schools.com/jsref/jsref_substring.asp
+	//REF length http://www.w3schools.com/jsref/jsref_length_string.asp
+	var data_substr = data.substring(3, data.length);
+	
+	var str = "abc";
+	
+	if (data_substr === str) {
+		
+		alert("Edit memo => failed");
+		
+	} else {
+		
+		$("div#div_message").text("Memo => edited");
+		
+		$("div#div_message").dialog(
+				{
+					draggable:	true,
+					width:		200,
+					height:		100,
+					title:		"",
+					//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+					position:	{ my: 'top', at: 'top+20%' },
+//					position:	{ my: 'top', at: 'top+10' },
+					dialogClass:	'ui-dialog-style-1'
+						,
+						buttons: {
+//				        " ": function() {
+////				            $(this).dialog("close");
+//				        }
+//					"close": function() {
+//						$(this).dialog("close");
+//					}
+						}
+				}
+		);
+		
+		AutoCloseDialogBox(2000);
+		
+		$("#table_poslist").html(data);
+		
+	}
+	
+}//_edit_memo_execute_Done(data, status, xhr)
+
 //REF http://dotnetguts.blogspot.jp/2012/02/how-to-open-and-auto-close-jquery-ui.html
 //REF referer http://forums.asp.net/t/1818619.aspx?close+alert+window+automatically+after+5+seconds Jun 27, 2012 06:59 AM
 function
@@ -987,6 +984,137 @@ setVolue(volume) {
 //	$("#volume_val").text(volume);
 	
 }
+
+function
+edit_memo(id, point, memo) {
+	
+//	alert("id => " + id);
+	var html = "<div>" + conv_Float_to_TimeLabel(point) + "</div>";
+//	var html = "<div>ID = " + id + "</div>";
+	
+//	if(memo == null) {
+//		alert("NULL!")
+//	
+//	} else if(memo == "") {
+//		
+//		alert("Blank");		// Blank
+//		
+//	} else {
+//		alert("Not NULL");
+//	}
+	
+	html += "<div><textarea id='jquery_textarea'>"
+//			+ "memo => "
+//			+ conv_Float_to_TimeLabel(point)
+			+ memo
+//			+ point
+			+ "</textarea></div>";
+	
+	$("div#div_message").html(html);
+//	$("div#div_message").text("Edit memo");
+	
+//	$("div#div_message").dialog();
+//	$("div#div_message").dialog(
+//		{
+//			draggable: true
+//		}
+//	);
+	
+//	alert("id => " + id);
+	
+	$("div#div_message").dialog(
+			{
+				draggable:	true,
+				width:		500,
+				height:		500,
+				title:		"Edit memo",
+//				title:		"abc",
+//				modal: true,
+//				position: ['center'],
+//				position: [200, 200],
+//				position: ['center', 200],
+//				dialogClass: 'ui-dialog-osx'
+				//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+				position:	{ my: 'top', at: 'top+20%' },
+//				position:	{ my: 'top', at: 'top+10' },
+				dialogClass:	'ui-dialog-style-1'
+				,
+				buttons: {
+			        "Edit": function() {
+			        	_edit_memo_execute(id, memo);
+//			            $(this).dialog("close");
+			        },
+					"Close": function() {
+						$(this).dialog("close");
+					}
+			    }
+			}
+	);
+
+//	AutoCloseDialogBox(2000);
+	
+}
+
+function
+_edit_memo_execute(id, memo) {
+	
+	var memo = $("textarea#jquery_textarea").val();
+//	var memo = $("textarea#jquery_textarea");
+//	var memo = $("textarea#jquery_textarea").text();
+	
+//	alert("memo => " + memo);
+	
+	/***********************
+		Prep: ajax
+	 ***********************/
+	//alert("Start Ajax");
+	var hostname = window.location.hostname;
+	
+	var url;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		url = "/cake_apps/VM_Cake/positions/edit_memo";
+		
+	} else {
+	
+		url = "/VM_Cake/positions/edit_memo";
+	
+	}
+	
+//	alert(
+//		"url => " + url
+//		+ "\n"
+//		+ "memo => " + memo
+//		);
+	
+	$.ajax({
+		
+	    url: url,
+	    type: "POST",
+	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	    data: {id: id, memo: memo},
+	    
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+	//	alert(conv_Float_to_TimeLabel(data.point));
+	//	addPosition_ToList(data.point);
+		
+//		_delete_position_Ajax__Done(data, status, xhr);
+		_edit_memo_execute_Done(data, status, xhr);
+		
+	//	seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+	//    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ��: 404
+		alert(xhr.status);
+	    
+	});
+	
+}//edit_memo_execute()
 
 $(function() {
 	//REF http://iviewsource.com/codingtutorials/building-a-ui-slider-with-javascript-and-jquery-ui/

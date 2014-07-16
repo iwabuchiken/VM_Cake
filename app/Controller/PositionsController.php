@@ -4,7 +4,49 @@ class PositionsController extends AppController {
 	public $helpers = array('Html', 'Form');
 
 	public function index() {
-		$this->set('positions', $this->Position->find('all'));
+		
+		/******************************
+		
+			position: set options
+		
+		******************************/
+		$option = $this->_index_Options();
+		
+// 		debug($option);
+		
+		$this->set('positions', $this->Position->find('all',
+				$option
+				
+		));
+		
+	}//public function index()
+	
+	public function _index_Options() {
+		
+// 		debug($this->request->query['sort']);
+		
+		if (@$this->request->query['sort']) {
+			// 		if (@$this->request->query['order']) {
+		
+			$sort = $this->request->query['sort'];
+				
+			// 			debug("yes");
+			$option = array(
+					'order' => array(
+							"Position.$sort" => 'asc')
+			);
+				
+		} else {
+		
+			$option = array(
+					'order' => array(
+							"Position.id" => 'asc')
+			);
+		
+		}
+		
+		return $option;
+		
 	}
 	
 	public function view($id = null) {
@@ -126,5 +168,38 @@ class PositionsController extends AppController {
 	
 	}//public function delete($id)
 	
-	
+	public function edit_memo() {
+
+		$this->layout = 'plain';
+		
+		$position_id = $this->request->query['id'];
+		$position_memo = $this->request->query['memo'];
+		
+		$position = $this->Position->findById($id);
+		
+		$position['Position']['memo'] = $position_memo;
+		
+		/******************************
+		
+			Edit memo
+		
+		******************************/
+		$this->Position->save($position);
+		
+// 		if ($res == true) {
+		
+			$this->sort_PosList();
+			// 			$this->render('/Elements/videos/js/delete_position_failed');
+				
+// 		} else {
+		
+// 			// 			delete_position_failed.ctp
+// 			$this->render('/Elements/videos/js/delete_position_failed');
+		
+// 		}
+// 		;
+		
+		
+// 		$position = $this->Position->findById($id);
+	}	
 }

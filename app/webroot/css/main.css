@@ -258,7 +258,7 @@ img.button_controller {
 	font-size: 110% !important;
 /*    font-size: 110% !important;*/
     color: black;
-    background: #FFFFFF !important;
+    background: #91A2EE !important;
     /* REF http://www.w3schools.com/cssref/pr_text_text-align.asp */
     text-align:	center;
     
@@ -274,6 +274,11 @@ img.button_controller {
 /*#dialog .ui-button-text {*/
     font-size: 25px; /* Or whatever smaller value works for you. */
     margin-right: 5px;
+    
+    color:	#3D9874;
+    
+    background:	#C4C4C4;
+    
 }
 
 .ui-dialog-buttonpane {
@@ -345,4 +350,10 @@ span#volume_val {
 	position:	absolute;
 	left:		230px;
 	
+}
+
+textarea#jquery_textarea {
+	
+	height:	170px;
+	margin-top:	20px
 }
