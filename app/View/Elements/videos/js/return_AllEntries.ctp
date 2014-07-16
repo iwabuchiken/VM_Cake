@@ -1,8 +1,8 @@
 <?php
 	// Simpler way of making sure all no-cache headers get sent
 	// and understood by all browsers, including IE.
-	session_cache_limiter('nocache');
-	header('Expires: ' . gmdate('r', 0));
+// 	session_cache_limiter('nocache');
+// 	header('Expires: ' . gmdate('r', 0));
 	
 	header('Content-type: text/html');
 ?>
@@ -15,9 +15,9 @@
 			
 				echo "<tr>";
 			
-				$url = $video['Video']['url'];
+// 				$url = $video['Video']['url'];
 				
-				parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+// 				parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
 				
 // 				$tag_Point = "<td onclick=\"seek("
 				$tag_Point = "<td onclick=\"seek_v2("
@@ -34,9 +34,24 @@
 				echo $tag_Point;
 				
 				
-				$tag_Memo = "<td>"
+// 				$tag_Memo = "<td>"
+				$tag_Memo = "<td onclick='edit_memo("
+						."\""
+						.$position['Position']['id']
+						."\""
+						.", "
+						."\""
+						.$position['Position']['point']
+						."\""
+						.", "
+						."\""
 						.$position['Position']['memo']
-						."</td>";
+						."\""
+						.")'"
+						.">"
+						.$position['Position']['memo']
+						."</td>"
+						;
 		
 				echo $tag_Memo;
 				
@@ -61,7 +76,8 @@
 				);
 				echo "</td>";
 				
-				echo "</tr>";
+				echo "</tr>"
+					."\n";
 			
 				$count ++;
 				

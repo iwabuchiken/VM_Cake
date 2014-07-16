@@ -170,12 +170,24 @@ class PositionsController extends AppController {
 	
 	public function edit_memo() {
 
-		$this->layout = 'plain';
+// 		$this->layout = 'plain';
 		
+		/******************************
+		
+			params
+		
+		******************************/
 		$position_id = $this->request->query['id'];
 		$position_memo = $this->request->query['memo'];
+		$video_id = $this->request->query['video_id'];
+
+		/******************************
 		
-		$position = $this->Position->findById($id);
+			position
+		
+		******************************/
+		$position = $this->Position->findById($position_id);
+// 		$position = $this->Position->findById($id);
 		
 		$position['Position']['memo'] = $position_memo;
 		
@@ -188,7 +200,7 @@ class PositionsController extends AppController {
 		
 // 		if ($res == true) {
 		
-			$this->sort_PosList();
+		$this->sort_PosList($video_id);
 			// 			$this->render('/Elements/videos/js/delete_position_failed');
 				
 // 		} else {
@@ -201,5 +213,84 @@ class PositionsController extends AppController {
 		
 		
 // 		$position = $this->Position->findById($id);
-	}	
+	}
+
+	public function
+	sort_PosList($video_id) {
+		/******************************
+	
+		layout
+	
+		******************************/
+		$this->layout = 'plain';
+	
+		/******************************
+	
+		get: parameter
+	
+		******************************/
+// 		$id = $this->request->query['video_id'];
+	
+		/******************************
+	
+		positions
+	
+		******************************/
+// 		$this->loadModel('Position');
+			
+		$positions = $this->Position->find('all',
+				//REF conditions http://book.cakephp.org/2.0/en/models/retrieving-your-data.html#find
+				array(
+						'conditions' => array(
+								'Position.video_id' => $video_id
+									
+						)
+				)
+		);
+	
+		$positions = $this->sort_Position_by_Point($positions);
+	
+		//REF http://blogs.bigfish.tv/adam/2008/03/24/sorting-with-setsort-in-cakephp-12/
+		//REF referer http://cakephp.1045679.n5.nabble.com/Using-usort-in-Cake-td1327099.html Aug 10, 2009; 11:32pm
+		// 		$positions = Set::sort($positions, '{n}.Position.point', 'asc');
+	
+		$this->set('positions', $positions);
+	
+// 		debug("done");
+
+		$this->render('/Elements/videos/js/return_AllEntries');
+	
+	}//sort_PosList()
+	
+	public function
+	sort_Position_by_Point($positions) {
+	
+		// 		usort($positions, "cmp_Position_by_Point");
+	
+		//REF http://cakephp.1045679.n5.nabble.com/Using-usort-in-Cake-td1327099.html Aug 11, 2009; 9:18pm
+		usort($positions, array(&$this, "cmp_Position_by_Point"));
+	
+		return $positions;
+	
+		// 		return usort($positions, array(&$this, "cmp_Position_by_Point"));
+	
+	}
+	
+	//REF http://stackoverflow.com/questions/4282413/php-sort-array-of-objects-by-object-fields answered Nov 26 '10 at 3:53
+	public function
+	cmp_Position_by_Point($pos1, $pos2) {
+	
+		//REF http://www.php.net/manual/en/function.floatval.php
+		$point_1 = floatval($pos1['Position']['point']);
+		$point_2 = floatval($pos2['Position']['point']);
+	
+		//REF http://stackoverflow.com/questions/481466/php-string-to-float answered Jan 26 '09 at 21:35
+		// 		$point_1 = (float) $pos1['Position']['point'];
+		// 		$point_2 = (float) $pos2['Position']['point'];
+	
+		return $point_1 > $point_2;
+		// 		return $point_1 < $point_2;
+	
+	}
+	
 }

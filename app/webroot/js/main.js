@@ -1082,6 +1082,9 @@ _edit_memo_execute(id, memo) {
 	
 	}
 	
+	// video id
+	var video_id = $("#video_id_hidden").val();
+	
 //	alert(
 //		"url => " + url
 //		+ "\n"
@@ -1091,9 +1094,10 @@ _edit_memo_execute(id, memo) {
 	$.ajax({
 		
 	    url: url,
-	    type: "POST",
+	    type: "GET",
+//	    type: "POST",
 	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
-	    data: {id: id, memo: memo},
+	    data: {id: id, memo: memo, video_id: video_id},
 	    
 	    timeout: 10000
 	    
