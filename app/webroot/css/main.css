@@ -145,6 +145,20 @@ table.table_no_line tr td {
 	
 }
 
+table#links {
+	
+	width:	400px;
+	
+}
+
+table#links tr td {
+	
+	border:	1px solid white;
+	width:	100px;
+	text-align:	center;
+	
+}
+
 a.link_alert {
 	
 	color: red;

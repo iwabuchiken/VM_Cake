@@ -60,6 +60,8 @@ class AppController extends Controller {
 	
 // 		require_once $this->path_Utils.DS."db_util.php";
 	
+		$this->Auth->allow('index', 'view');
+		
 	}
 	
 	private function _Setup_Paths() {
@@ -115,5 +117,22 @@ class AppController extends Controller {
 	
 	
 	}//public function _Setup_Paths()
+
+	public $components = array(
+			'Session',
+			'Auth' => array(
+					'loginRedirect' => array(
+							'controller' => 'videos',
+// 							'controller' => 'posts',
+							'action' => 'index'
+					),
+					'logoutRedirect' => array(
+							'controller' => 'videos',
+							'action' => 'index'
+// 							'action' => 'display',
+// 							'home'
+					)
+			)
+	);
 	
 }//class AppController extends Controller
