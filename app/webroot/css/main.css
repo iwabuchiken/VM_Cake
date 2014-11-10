@@ -366,8 +366,45 @@ span#volume_val {
 	
 }
 
+span.Pg_first a {
+	
+	color: purple;
+	
+}
+
+span.Pg_last a {
+	
+	color: purple;
+	
+}
+
+span.Pg_prev {
+	
+	color: purple;
+	
+}
+
+span.Pg_prev a {
+	
+	color: blue;
+	
+}
+
+span.Pg_next {
+	
+	color: purple;
+	
+}
+
+span.Pg_next a {
+	
+	color: blue;
+	
+}
+
 textarea#jquery_textarea {
 	
 	height:	170px;
 	margin-top:	20px
 }
+

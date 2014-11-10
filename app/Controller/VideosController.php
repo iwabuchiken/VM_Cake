@@ -4,50 +4,76 @@ class VideosController extends AppController {
 	public $helpers = array('Html', 'Form', 'Mytest');
 // 	public $helpers = array('Html', 'Form');
 
+	public $components = array('Paginator');
+	
 	public function index() {
-// 		$this->set('videos', $this->Video->find('all'));
-	
-// 		debug(count($this->request->query));
-// 		debug($this->request->query);
-// 		debug($this->request->query['sort']);
-// 		debug(@$this->request->query['order'] ? "yes" : "no");
+
+		/**********************************
+		 * paginate
+		**********************************/
+		$page_limit = 10;
 		
-		if (@$this->request->query['sort']) {
-// 		if (@$this->request->query['order']) {
+		$opt_order = array(
+				// 						'Token.id' => 'asc',
+				'Video.id' => 'asc',
 		
-			$sort = $this->request->query['sort'];
+		);
+		
+		$opt_conditions = '';
+		
+		$this->paginate = array(
+				// 					'conditions' => array('Image.file_name LIKE' => "%$filter_TableName%"),
+				// 				'conditions' => array('Image.memos LIKE' => "%$filter_TableName%"),
+				'limit' => $page_limit,
+				'order' => $opt_order,
+				'conditions'	=> $opt_conditions
+				// 				'order' => array(
+				// 						'id' => 'asc'
+				// 				)
+		);
+		
+		$num_of_videos = count($this->Video->find('all'));
+		
+		$this->set('num_of_videos', $num_of_videos);
+		
+		$this->set('num_of_pages', (int) ceil($num_of_videos / $page_limit));
+		
+		$this->set('videos', $this->paginate('Video'));
+				
+		
+// 		if (@$this->request->query['sort']) {
+		
+// 			$sort = $this->request->query['sort'];
 			
-// 			debug("yes");
-			$option = array(
-							'order' => array(
-									"Video.$sort" => 'asc')
-			);
-			
-		} else {
-		
-			$option = array(
-					'order' => array(
-							"Video.id" => 'asc')
-			);
-		
-		}
-		
-		$this->set('videos', $this->Video->find('all',
-						$option
-// 						array(
+// // 			debug("yes");
+// 			$option = array(
 // 							'order' => array(
-// 									'Video.id' => 'asc')
-// 						)
+// 									"Video.$sort" => 'asc')
+// 			);
+			
+// 		} else {
+		
+// 			$option = array(
+// 					'order' => array(
+// 							"Video.id" => 'asc')
+// 			);
+		
+// 		}
+		
+// 		$this->set('videos', $this->Video->find('all',
+// 						$option
+// // 						array(
+// // 							'order' => array(
+// // 									'Video.id' => 'asc')
+// // 						)
 		
 	
-		));
+// 		));
 		
-// 		debug(Utils::get_dPath_Log());
-		
-		Utils::write_Log(
-					Utils::get_dPath_Log(), 
-					"Videos#index", 
-					__FILE__, __LINE__);
+// 		Utils::write_Log(
+// 					Utils::get_dPath_Log(), 
+// 					"Videos#index", 
+// 					__FILE__, __LINE__);
 		
 	}
 	

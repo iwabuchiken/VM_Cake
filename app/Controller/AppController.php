@@ -47,7 +47,8 @@ class AppController extends Controller {
 	
 	public $title_Length	= 60;
 	
-	public function beforeFilter() {
+	public function 
+	beforeFilter() {
 	
 		$this->_Setup_Paths();
 	
@@ -62,7 +63,7 @@ class AppController extends Controller {
 	
 		$this->Auth->allow('index', 'view');
 		
-	}
+	}//beforeFilter
 	
 	private function _Setup_Paths() {
 		/****************************************
