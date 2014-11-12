@@ -4,6 +4,162 @@
 
 var previous_position;
 
+function 
+add_Memo_js(id) {
+	
+//	alert("id => " + id);
+	
+	var text = $("#td_video_memo").text();
+	
+//	alert("text => " + text);
+	
+//	var html = "<div>" + text + "</div>";
+	
+	var html = "<div><textarea id='jquery_textarea'>"
+			+ text
+			+ "</textarea></div>";
+	
+	$("div#div_message").html(html);
+//	
+	$("div#div_message").dialog(
+			{
+				draggable:	true,
+				width:		500,
+				height:		500,
+				title:		"Edit memo",
+//				title:		"abc",
+//				modal: true,
+//				position: ['center'],
+//				position: [200, 200],
+//				position: ['center', 200],
+//				dialogClass: 'ui-dialog-osx'
+				//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+				position:	{ my: 'top', at: 'top+20%' },
+//				position:	{ my: 'top', at: 'top+10' },
+				dialogClass:	'ui-dialog-style-1'
+				,
+				buttons: {
+					
+			        "Edit": function() {
+			        	
+			        	_add_Memo_js_execute(id);
+//			        	_edit_memo_execute(id, memo);
+			        },
+			        
+					"Close": function() {
+						$(this).dialog("close");
+					}
+			        
+			    }//buttons: {
+			}
+			
+	);//$("div#div_message").dialog
+
+//	AutoCloseDialogBox(2000);
+	
+}//add_Memo_js
+
+function
+_add_Memo_js_execute(id) {
+
+	/***********************
+		get: memo
+	 ***********************/
+	var memo = $("textarea#jquery_textarea").val();
+
+	/***********************
+		prep: url
+	 ***********************/
+	var hostname = window.location.hostname;
+	
+	var url;
+	
+	if (hostname == "benfranklin.chips.jp") {
+		
+		url = "/cake_apps/VM_Cake/videos/add_Memo";
+		
+	} else {
+	
+		url = "/VM_Cake/videos/add_Memo";
+	
+	}
+	
+	/***********************
+		get: video id
+	 ***********************/
+	// video id
+	var video_id = id;
+
+	/***********************
+		ajax
+	 ***********************/
+	$.ajax({
+		
+	    url: url,
+	    type: "GET",
+	    //REF http://stackoverflow.com/questions/1916309/pass-multiple-parameters-to-jquery-ajax-call answered Dec 16 '09 at 17:37
+	    data: {id: video_id, memo: memo},
+	    
+	    timeout: 10000
+	    
+	}).done(function(data, status, xhr) {
+		
+		_add_Memo_js_execute_Done(data, status, xhr);
+		
+//		alert(data);
+		
+//	//	alert(conv_Float_to_TimeLabel(data.point));
+//	//	addPosition_ToList(data.point);
+//		
+////		_delete_position_Ajax__Done(data, status, xhr);
+//		_edit_memo_execute_Done(data, status, xhr);
+//		
+//	//	seek(data);
+		
+	}).fail(function(xhr, status, error) {
+		
+	//    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ��: 404
+		alert(xhr.status);
+	    
+	});
+	
+}//_add_Memo_js_execute+
+
+function
+_add_Memo_js_execute_Done
+(data, status, xhr) {
+	
+//	alert(data);
+	
+	$("div#div_message").text("Memo => updated");
+	
+	$("div#div_message").dialog(
+			{
+				draggable:	true,
+				width:		200,
+				height:		100,
+				title:		"",
+				//REF http://stackoverflow.com/questions/9304830/jqueryui-dialog-positioning answered Feb 16 '12 at 23:31
+				position:	{ my: 'top', at: 'top+20%' },
+//				position:	{ my: 'top', at: 'top+10' },
+				dialogClass:	'ui-dialog-style-1'
+					,
+					buttons: {
+//			        " ": function() {
+////			            $(this).dialog("close");
+//			        }
+//				"close": function() {
+//					$(this).dialog("close");
+//				}
+					}
+			}
+	);
+	
+	AutoCloseDialogBox(2000);
+
+	
+}//_add_Memo_js_execute_Done
+
 function show_category_list() {
 	
 	var select_genre = $("#keyword_genre_id");

@@ -103,7 +103,16 @@
 		
 		?>
     </td>
-    <td rowspan="2" id="td_video_memo">
+    
+    <!-- REF padding http://www.htmq.com/style/margin.shtml -->
+    <td 
+    	onclick="add_Memo_js(<?php echo $video['Video']['id'] ?>)" 
+    	rowspan="2" 
+    	id="td_video_memo"
+    	style="font-size: 20px; padding: 20px;"
+    	>
+    	
+<!--     <td rowspan="2" id="td_video_memo"> -->
     	<?php 
     	
     		echo $video['Video']['memo'];
