@@ -543,4 +543,79 @@ class VideosController extends AppController {
 		
 	}//sort_PosList()
 
+	public function
+	add_Memo() {
+
+		$this->layout = 'plain';
+
+		/**********************************
+		* get: memo, id
+		**********************************/
+		@$memo = $this->request->query['memo'];
+		@$id = $this->request->query['id'];
+		
+		$msg = "";
+		
+		if ($memo != null && $id != null) {
+			
+			$msg = "memo => ".$memo." / "."id => ".$id;
+			
+// 			$this->set("msg", $msg);
+			
+		} else {
+			
+			$this->set("msg","null");
+			
+			$this->render('/Elements/videos/js/add_Memo');
+			
+			return;
+			
+		}
+		
+		/**********************************
+		* get: video
+		**********************************/
+		$video = $this->Video->findById($id);
+		
+		if (!$video) {
+			
+			$msg = "video => null";
+			
+			$this->set("msg", $msg);
+			
+			$this->render('/Elements/videos/js/add_Memo');
+			
+			return;
+			
+		} else {
+			
+			$msg .= " / video => found";
+			
+			
+		}
+
+		/**********************************
+		* update: memo
+		**********************************/
+		$video['Video']['memo'] = $memo;
+		
+		if ($this->Video->save($video)) {
+		
+// 			$this->Session->setFlash(__('Video updated.'));
+		
+			$msg .= " ** VIDEO => saved";
+			
+		} else {//if ($this->Text->save($this->request->data))
+			
+			$msg .= " ** VIDEO => can't be saved";
+			
+		}//if ($this->Text->save($this->request->data))
+		
+		
+		$this->set("msg", $msg);
+		
+		$this->render('/Elements/videos/js/add_Memo');
+		
+	}
+	
 }
