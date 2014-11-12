@@ -3,6 +3,31 @@
 
 <div>
 
+
+	<?php echo $this->element('videos/view/view_zoom'); ?>
+	
+<!-- <div> -->
+
+<!-- 	<button  -->
+<!-- 		onclick="body.style.zoom='50%'" -->
+<!-- 		style="font-size: 10px;" -->
+<!-- 		> -->
+<!-- 			Zoom 50% -->
+<!-- 	</button> -->
+	<!-- <button onclick="ytplayer.style.zoom='50%'">Zoom 50%</button> -->
+	<!-- <button onclick="sample.style.zoom='50%'">Zoom 50%</button> -->
+
+<!-- </div> -->
+
+<!-- <br> -->
+
+
+	<script type="text/javascript">
+		//REF http://api.jquery.com/css/
+		$("body").css("zoom", "75%");
+	
+	</script>
+	
 	
 	<div id="controller">
 		<?php echo $this->Html->link($video['Video']['title'],
@@ -49,6 +74,19 @@
 <!-- <div id="volume_val"></div> -->
 
 <br>
+
+<!-- <div id="sample"> -->
+	
+<!-- 	Zoom -->
+
+<!-- </div> -->
+<!-- <div> -->
+
+	<!-- <button onclick="body.style.zoom='50%'">Zoom 50%</button> -->
+	<!-- <button onclick="ytplayer.style.zoom='50%'">Zoom 50%</button> -->
+	<!-- <button onclick="sample.style.zoom='50%'">Zoom 50%</button> -->
+
+<!-- </div> -->
 
 <table class="table_no_line">
   <tr>

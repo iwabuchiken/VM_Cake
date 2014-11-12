@@ -15,7 +15,8 @@ class VideosController extends AppController {
 		
 		$opt_order = array(
 				// 						'Token.id' => 'asc',
-				'Video.id' => 'asc',
+				'Video.id' => 'desc',
+// 				'Video.id' => 'asc',
 		
 		);
 		
