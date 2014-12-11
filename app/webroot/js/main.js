@@ -84,8 +84,6 @@ _add_Memo_js_execute(id) {
 	
 	}
 	
-//	alert(url);
-	
 	/***********************
 		get: video id
 	 ***********************/
@@ -106,7 +104,11 @@ _add_Memo_js_execute(id) {
 	    
 	}).done(function(data, status, xhr) {
 		
+//<<<<<<< HEAD
 		_add_Memo_js_execute_Done(data, status, xhr, memo);
+//=======
+//		_add_Memo_js_execute_Done(data, status, xhr);
+//>>>>>>> D-10_video-memo_editable
 		
 //		alert(data);
 		
@@ -120,6 +122,7 @@ _add_Memo_js_execute(id) {
 		
 	}).fail(function(xhr, status, error) {
 		
+//<<<<<<< HEAD
 		if (xhr.status == 403) {
 			
 			alert("ajax: 403 returned. Maybe, not yet logged in?");
@@ -133,6 +136,10 @@ _add_Memo_js_execute(id) {
 	//    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ��: 404
 //		alert("ajax => failed: " + xhr.status);
 //		alert(xhr.status);
+//=======
+//	//    $("#jqarea").append("xhr.status = " + xhr.status + "<br>");          // ��: 404
+//		alert(xhr.status);
+//>>>>>>> D-10_video-memo_editable
 	    
 	});
 	
@@ -140,7 +147,11 @@ _add_Memo_js_execute(id) {
 
 function
 _add_Memo_js_execute_Done
+//<<<<<<< HEAD
 (data, status, xhr, memo) {
+//=======
+//(data, status, xhr) {
+//>>>>>>> D-10_video-memo_editable
 	
 //	alert(data);
 	
