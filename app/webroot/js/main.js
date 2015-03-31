@@ -354,7 +354,7 @@ seek(position) {
 
   if (ytplayer) {
 
-	  alert("previous position => " + conv_Float_to_TimeLabel(previous_position))
+//	  alert("previous position => " + conv_Float_to_TimeLabel(previous_position))
 	  
 	  previous_position = position;
 	  
@@ -1335,3 +1335,62 @@ $(function() {
 //	    alert("range" => range);
     
   });
+
+function
+player_forward() {
+
+	/***************************
+		get: time
+	 ***************************/
+	if (ytplayer) {
+		
+		var cur = ytplayer.getCurrentTime();
+
+		if (cur == null) {
+			
+			alert("cur => null");
+			
+		}
+		
+		var cur_new = cur + 5;
+		
+		seek(cur_new);
+		
+//		alert("cur=" + cur + "/" + "cur_new=" + cur_new);
+		
+//		alert(cur);
+		
+	} else {
+
+		alert("ytplayer => null");
+		
+	}
+	
+}//player_forward
+
+function
+player_backward() {
+
+	/***************************
+		get: time
+	 ***************************/
+	if (ytplayer) {
+		
+		var cur = ytplayer.getCurrentTime();
+	
+		var cur_new = cur - 5;
+		
+		seek(cur_new);
+		
+	//	alert("cur=" + cur + "/" + "cur_new=" + cur_new);
+		
+	//	alert(cur);
+		
+	} else {
+	
+		alert("ytplayer => null");
+		
+	}
+
+}//player_backward
+

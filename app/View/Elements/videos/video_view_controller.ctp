@@ -66,6 +66,8 @@
 			id="scroll_ToBottom"
 			class="button_controller">
 		
+		
+		
 			
     </td>
 
@@ -83,5 +85,29 @@
     
   </tr>
   
+  <tr>
+  	<td class="td_controller">
+  	
+  		<img 
+			src="<?php echo $url_src; ?>/player_backward_64x64.png" 
+			alt="backward"
+			onclick="player_backward();"
+			id="backward"
+			class="button_controller">
+  	
+  	</td>
+  	
+  	<td class="td_controller">
+  	
+  		<img 
+			src="<?php echo $url_src; ?>/player_forward_64x64.png" 
+			alt="forward"
+			onclick="player_forward();"
+			id="forward"
+			class="button_controller">
+  	
+  	</td>
+  	
+  </tr>
 </table>
 
