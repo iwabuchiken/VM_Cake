@@ -34,3 +34,10 @@
 		echo $video['Video']['title']
 	
 	?>
+		
+	<hr>
+<!-- 	<body> -->
+  <button onclick="ShowTime()">Show Time</button>
+  <br>
+  <div id="it"></div>
+<!-- </body -->

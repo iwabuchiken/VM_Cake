@@ -45,6 +45,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->Html->script('jquery-ui.js');
 		
 		echo $this->Html->script('main');
+		echo $this->Html->script('main_2');
 		
 	?>
 </head>
