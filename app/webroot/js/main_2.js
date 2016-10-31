@@ -28,11 +28,19 @@ var tag;
    
    function get_VideoURL() {
 	   
+	   alert("get_VideoURL");
+	   
 //	   var video_url = $("#video_url").val();
 	   var video_url = $("#video_url_hidden").val();
 	   
 	   alert(video_url);
 //	   alert("url => " + video_url);
+	   
+	   //test
+	   var video_id = $("#video_id").val();
+//	   var video_id = $("#video_id_hidden").val();
+	   
+	   alert(video_id);
 	   
 	   return "https://www.youtube.com/iframe_api";
 	   
