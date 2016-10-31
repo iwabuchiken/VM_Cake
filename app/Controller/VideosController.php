@@ -139,8 +139,7 @@ class VideosController extends AppController {
 		$this->_test_SimpleXMLElement();
 // 		$this->_test_DOMXML();
 
-		
-	}
+	}//public function view($id = null)
 
 	public function view_2($id = null) {
 		if (!$id) {

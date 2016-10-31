@@ -60,7 +60,7 @@
 </div>
 
   <!-- REF http://stackoverflow.com/questions/16293741/original-purpose-of-input-type-hidden answered Apr 30 '13 at 6:43 -->
-  <input type="hidden" id="video_id_hidden" name="video_id" value="<?php echo $video['Video']['id']?>">
+  <input type="hidden" id="" name="video_id" value="<?php echo $video['Video']['id']?>">
 
   <?php echo $this->element('videos/view/view_script_swf')?>
   

@@ -49,7 +49,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		
 	?>
 </head>
-<body>
+<!-- <body onload='get_VideoURL();'> -->
+<body onload='init_Player();'>
+<!--  <body onload='alert("onload")'> -->
 <!-- 	<div id="container"> -->
 	<div>
 <!-- 		<div id="header"> -->

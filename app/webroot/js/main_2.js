@@ -1,15 +1,42 @@
 //alert("main_2");
 
 //ref http://stackoverflow.com/questions/33854708/cant-get-youtube-video-current-time
-var tag = document.createElement('script');
+var tag;
+//var tag = document.createElement('script');
 
-   tag.src = "https://www.youtube.com/iframe_api";
-   var firstScriptTag = document.getElementsByTagName('script')[0];
-   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//   tag.src = get_VideoURL();
+//   tag.src = "https://www.youtube.com/iframe_api";
+   var firstScriptTag;
+//   var firstScriptTag = document.getElementsByTagName('script')[0];
+//   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
    var player;
 
+//   init_Player();
+
+   function init_Player() {
+	   
+	   tag = document.createElement('script');
+	   
+	   tag.src = get_VideoURL();
+	   
+	   firstScriptTag = document.getElementsByTagName('script')[0];
+	   
+	   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	   
+   }
    
+   function get_VideoURL() {
+	   
+//	   var video_url = $("#video_url").val();
+	   var video_url = $("#video_url_hidden").val();
+	   
+	   alert(video_url);
+//	   alert("url => " + video_url);
+	   
+	   return "https://www.youtube.com/iframe_api";
+	   
+   }
    
    function onYouTubeIframeAPIReady() {
      player = new YT.Player('it', {
@@ -41,6 +68,9 @@ var tag = document.createElement('script');
    }
 
    function ShowTime() {
+	   
+	   get_VideoURL();
+	   
      alert(player.getCurrentTime());
    }
    
