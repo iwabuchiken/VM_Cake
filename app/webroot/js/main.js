@@ -613,14 +613,7 @@ function saveCurrentTime_js() {
 	/***********************
 		sound
 	 ***********************/
-//	Tick-DeepFrozenApps-397275646.wav
 	sound("Tick-DeepFrozenApps-397275646.mp3");
-//	sound("Tick-DeepFrozenApps-397275646.wav");
-//	  var aud = $("audio#audio_play")[0];
-////	  Woosh-Mark_DiAngelo-4778593.wav
-//	  aud.src = "/VM_Cake/audio/POOL-Pool_Shot-709343898.mp3";
-//	  aud.play();
-
 	
 	/***********************
 		UIs
@@ -630,8 +623,18 @@ function saveCurrentTime_js() {
 	/***********************
 		data
 	 ***********************/
+	
+	//test
+	alert(ytplayer);
+	
 	var curTime = ytplayer.getCurrentTime();
 //	var curTime = getCurrentTime();
+	
+	//test
+	alert("showing curTime...");
+	alert(curTime);
+//	alert("curTime => " + curTime);
+	aaa
 	
 	var hostname = window.location.hostname;
 	
@@ -643,7 +646,8 @@ function saveCurrentTime_js() {
 		
 	} else {
 		
-		url = "/VM_Cake/videos/save_CurrentTime";
+		url = "/Eclipse_Luna/VM_Cake/videos/save_CurrentTime";
+//		url = "/VM_Cake/videos/save_CurrentTime";
 		
 	}
 	
